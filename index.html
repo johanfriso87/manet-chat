@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="assets/css/three-dots.css">
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+  <script src="assets/js/script.js"></script>
+  <title>プロの解説とみんなの口コミが集まる | マネット カードローン比較</title>
+</head>
+
+<body>
+  <div class="q-modal" id="q-modal1">
+    <div class="q-modal__container">
+      <div class="q-modal__content"> <button class="q-modal__close-icon js-q-modal-close"> <img
+            src="assets/img/icon_close.svg" alt="閉じる"> </button>
+        <div class="q-modal__block">
+          <div class="q-modal__block-text">物件は、海から近いですか？ </div>
+          <div class="q-modal__buttons">
+            <ul>
+              <li><button class="js-set-value" data-question-id="1" data-question-name="25"
+                  data-set-val="はい">はい</button></li>
+              <li><button class="js-set-value" data-question-id="1" data-question-name="25"
+                  data-set-val="いいえ">いいえ</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="q-modal" id="q-modal2">
+    <div class="q-modal__container">
+      <div class="q-modal__content"> <button class="q-modal__close-icon js-q-modal-close"> <img
+            src="assets/img/icon_close.svg" alt="閉じる"> </button>
+        <div class="q-modal__block">
+          <div class="q-modal__block-text">近所に川や湖はありますか？ </div>
+          <div class="q-modal__buttons">
+            <ul>
+              <li><button class="js-set-value" data-question-id="2" data-question-name="26"
+                  data-set-val="はい">はい</button></li>
+              <li><button class="js-set-value" data-question-id="2" data-question-name="26"
+                  data-set-val="いいえ">いいえ</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="q-modal" id="q-modal3">
+    <div class="q-modal__container">
+      <div class="q-modal__content"> <button class="q-modal__close-icon js-q-modal-close"> <img
+            src="assets/img/icon_close.svg" alt="閉じる"> </button>
+        <div class="q-modal__block">
+          <div class="q-modal__block-text">近所に工場はありますか？ </div>
+          <div class="q-modal__buttons">
+            <ul>
+              <li><button class="js-set-value" data-question-id="3" data-question-name="factory"
+                  data-set-val="はい">はい</button></li>
+              <li><button class="js-set-value" data-question-id="3" data-question-name="factory"
+                  data-set-val="いいえ">いいえ</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="q-modal" id="q-modal4">
+    <div class="q-modal__container">
+      <div class="q-modal__content"> <button class="q-modal__close-icon js-q-modal-close"> <img
+            src="assets/img/icon_close.svg" alt="閉じる"> </button>
+        <div class="q-modal__block">
+          <div class="q-modal__block-text">大通りの道路や車通りが多い面に接してますか？ </div>
+          <div class="q-modal__buttons">
+            <ul>
+              <li><button class="js-set-value" data-question-id="4" data-question-name="oodori"
+                  data-set-val="はい">はい</button></li>
+              <li><button class="js-set-value" data-question-id="4" data-question-name="oodori"
+                  data-set-val="いいえ">いいえ</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="q-modal" id="q-modal5">
+    <div class="q-modal__container">
+      <div class="q-modal__content"> <button class="q-modal__close-icon js-q-modal-close"> <img
+            src="assets/img/icon_close.svg" alt="閉じる"> </button>
+        <div class="q-modal__block">
+          <div class="q-modal__block-text">日当たりのよい立地ですか？ </div>
+          <div class="q-modal__buttons">
+            <ul>
+              <li><button class="js-set-value" data-question-id="5" data-question-name="27"
+                  data-set-val="はい">はい</button>
+              </li>
+              <li><button class="js-set-value" data-question-id="5" data-question-name="27"
+                  data-set-val="いいえ">いいえ</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="q-modal" id="q-modal6">
+    <div class="q-modal__container">
+      <div class="q-modal__content"> <button class="q-modal__close-icon js-q-modal-close"> <img
+            src="assets/img/icon_close.svg" alt="閉じる"> </button>
+        <div class="q-modal__block">
+          <div class="q-modal__block-text">山や林のなかに建っていますか？ </div>
+          <div class="q-modal__buttons">
+            <ul>
+              <li><button class="js-set-value" data-question-id="6" data-question-name="24"
+                  data-set-val="はい">はい</button>
+              </li>
+              <li><button class="js-set-value" data-question-id="6" data-question-name="24"
+                  data-set-val="いいえ">いいえ</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="q-modal" id="q-modal7">
+    <div class="q-modal__container">
+      <div class="q-modal__content"> <button class="q-modal__close-icon js-q-modal-close"> <img
+            src="assets/img/icon_close.svg" alt="閉じる"> </button>
+        <div class="q-modal__block">
+          <div class="q-modal__block-text">高台に建っていますか？ </div>
+          <div class="q-modal__buttons">
+            <ul>
+              <li><button class="js-set-value" data-question-id="7" data-question-name="28"
+                  data-set-val="はい">はい</button>
+              </li>
+              <li><button class="js-set-value" data-question-id="7" data-question-name="28"
+                  data-set-val="いいえ">いいえ</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="q-modal" id="q-modal8">
+    <div class="q-modal__container">
+      <div class="q-modal__content"> <button class="q-modal__close-icon js-q-modal-close"> <img
+            src="assets/img/icon_close.svg" alt="閉じる"> </button>
+        <div class="q-modal__block">
+          <div class="q-modal__block-text">庭・ベランダなどに移動が困難なものはございますか？ </div>
+          <div class="q-modal__buttons">
+            <ul>
+              <li><button class="js-set-value2" data-question-id="8" data-question-name="72"
+                  data-set-val="はい">はい</button>
+              </li>
+              <li><button class="js-set-value2" data-question-id="8" data-question-name="72"
+                  data-set-val="いいえ">いいえ</button></li>
+            </ul>
+          </div>
+          <div class="q-modal__idk"> <button class="js-set-value2 q-modal__idk-text" data-question-id="8"
+              data-question-name="72" data-set-val="わからない">わからない</button> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="q-modal" id="q-modal9">
+    <div class="q-modal__container">
+      <div class="q-modal__content"> <button class="q-modal__close-icon js-q-modal-close"> <img
+            src="assets/img/icon_close.svg" alt="閉じる"> </button>
+        <div class="q-modal__block">
+          <div class="q-modal__block-text">室外機はいくつございますか？ </div>
+          <div class="q-modal__buttons">
+            <ul>
+              <li><button class="js-set-value2" data-question-id="9" data-question-name="71"
+                  data-set-val="1～2台">1～2台</button></li>
+              <li><button class="js-set-value2" data-question-id="9" data-question-name="71"
+                  data-set-val="3台以上">3台以上</button></li>
+            </ul>
+          </div>
+          <div class="q-modal__idk"> <button class="js-set-value2 q-modal__idk-text" data-question-id="9"
+              data-question-name="71" data-set-val="わからない">わからない</button> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="q-modal" id="q-modal10">
+    <div class="q-modal__container">
+      <div class="q-modal__content"> <button class="q-modal__close-icon js-q-modal-close"> <img
+            src="assets/img/icon_close.svg" alt="閉じる"> </button>
+        <div class="q-modal__block">
+          <div class="q-modal__block-text">敷地内に車を駐車してますか？ </div>
+          <div class="q-modal__buttons">
+            <ul>
+              <li><button class="js-set-value2" data-question-id="10" data-question-name="73"
+                  data-set-val="はい">はい</button></li>
+              <li><button class="js-set-value2" data-question-id="10" data-question-name="73"
+                  data-set-val="いいえ">いいえ</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="q-modal" id="q-modal11">
+    <div class="q-modal__container">
+      <div class="q-modal__content"> <button class="q-modal__close-icon js-q-modal-close"> <img
+            src="assets/img/icon_close.svg" alt="閉じる"> </button>
+        <div class="q-modal__block">
+          <div class="q-modal__block-text">車庫は設置されてますか？ </div>
+          <div class="q-modal__buttons">
+            <ul>
+              <li><button class="js-set-value2" data-question-id="11" data-question-name="garage"
+                  data-set-val="はい">はい</button></li>
+              <li><button class="js-set-value2" data-question-id="11" data-question-name="garage"
+                  data-set-val="いいえ">いいえ</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="q-modal" id="q-modal12">
+    <div class="q-modal__container">
+      <div class="q-modal__content"> <button class="q-modal__close-icon js-q-modal-close"> <img
+            src="assets/img/icon_close.svg" alt="閉じる"> </button>
+        <div class="q-modal__block">
+          <div class="q-modal__block-text">施工会社の車を近くに駐車できる場所はありますか？ </div>
+          <div class="q-modal__buttons">
+            <ul>
+              <li><button class="js-set-value2" data-question-id="12" data-question-name="parking"
+                  data-set-val="はい">はい</button></li>
+              <li><button class="js-set-value2" data-question-id="12" data-question-name="parking"
+                  data-set-val="いいえ">いいえ</button></li>
+            </ul>
+          </div>
+          <div class="q-modal__idk"> <button class="js-set-value2 q-modal__idk-text" data-question-id="12"
+              data-question-name="parking" data-set-val="わからない">わからない</button> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="q-modal" id="q-modal13">
+    <div class="q-modal__container">
+      <div class="q-modal__content"> <button class="q-modal__close-icon js-q-modal-close"> <img
+            src="assets/img/icon_close.svg" alt="閉じる"> </button>
+        <div class="q-modal__block">
+          <div class="q-modal__block-text">テレビやBSなどのアンテナを設置していますか？ </div>
+          <div class="q-modal__buttons">
+            <ul>
+              <li><button class="js-set-value2" data-question-id="13" data-question-name="70"
+                  data-set-val="はい">はい</button></li>
+              <li><button class="js-set-value2" data-question-id="13" data-question-name="70"
+                  data-set-val="いいえ">いいえ</button></li>
+            </ul>
+          </div>
+          <div class="q-modal__idk"> <button class="js-set-value2 q-modal__idk-text" data-question-id="13"
+              data-question-name="70" data-set-val="わからない">わからない</button> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="q-modal" id="q-modal14">
+    <div class="q-modal__container">
+      <div class="q-modal__content"> <button class="q-modal__close-icon js-q-modal-close"> <img
+            src="assets/img/icon_close.svg" alt="閉じる"> </button>
+        <div class="q-modal__block">
+          <div class="q-modal__block-text">隣の家から1メートル以上の幅はありますか？ </div>
+          <div class="q-modal__buttons">
+            <ul>
+              <li><button class="js-set-value2" data-question-id="14" data-question-name="neiborhood"
+                  data-set-val="はい">はい</button></li>
+              <li><button class="js-set-value2" data-question-id="14" data-question-name="neiborhood"
+                  data-set-val="いいえ">いいえ</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal first-modal" id="modal-first">
+    <div class="modal_wrapper modal_first_wrapper">
+      <div class="first-modal__container">
+        <div class="first-modal__head">
+          <img src="assets/img/LP1_FV.png" alt="">
+        </div>
+        <div class="first-modal__body">
+          <div class="first-modal__body__head">
+            <div class="first-modal__body__head-text">カードローンは<br>金利ゼロ・最短30分で借りられる<br>ことを知っていましたか？</div>
+            <div class="first-modal__body__head-operator">
+            </div>
+          </div>
+          <ul class="first-modal__options option_list" data-itemid="fv">
+            <li class="first-modal__option">
+              <label class="first-modal__option-label">
+                <input type="radio" class="option" data-selected="はい" data-next="q1">
+                <div class="first-modal__option-btn"
+                  style="background-image: linear-gradient(-90deg, #eabb3a 0, #ea9723 100%);">はい</div>
+              </label>
+            </li>
+            <li class="first-modal__option">
+              <label class="first-modal__option-label">
+                <input type="radio" class="option" data-selected="いいえ" data-next="q1">
+                <div class="first-modal__option-btn"
+                  style="background-image: linear-gradient(-90deg, #9ad2e3 0, #46c5ee 100%);">いいえ</div>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="first-modal__loading__container" style="display:none;">
+    <div class="first-modal__loading">
+      <div class="loader">Loading...</div>
+      <div class="first-modal__loading-text">
+        ページ最適化表示<br>たった3分であなたに<br><span class="accent">ピッタリのカードローン</span>が分かります
+      </div>
+    </div>
+  </div>
+  <header>
+    <div class="head-center">
+      <img src="assets/img/logo.png" alt="マネットの窓口">
+      <img src="assets/img/record1.png" alt="月間利用者数100万人以上">
+      <img src="assets/img/record2.png" class="option_medal" alt="金利0円（初回30日間）">
+      <img src="assets/img/record3.png" class="option_medal" alt="出金まで最短30分">
+    </div>
+  </header>
+  <div class="thanks_tel">
+    <img src="assets/img/tel.jpg">
+  </div>
+  <div id="space" style="background:red;" data-size="0"></div>
+  <main role="main" class="contents_wrapper">
+    <div id="chats">
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <a href="https://ma-net.jp/card-loan/corp" target="_blank" rel="noopener">運営会社</a> ｜ <a
+        href="https://ma-net.jp/card-loan/research" target="_blank" rel="noopener">ランキング根拠</a> ｜ <a
+        href="https://ma-net.jp/card-loan/reliability" target="_blank" rel="noopener">運営方針・編集方針</a>
+      <br>
+      <a
+        href="https://gaiheki.support/grouprule" target="_blank" rel="noopener">情報セキュリティーポリシー</a> ｜ <a
+        href="https://ma-net.jp/card-loan/antisocial" target="_blank" rel="noopener">反社会的勢力排除ポリシー</a> ｜ <a
+        href="https://ma-net.jp/card-loan/contact/new" target="_blank" rel="noopener">お問い合わせ</a>
+    </div>
+  </footer>
+  <div id="restraint_toucher"></div>
+  <div class="modal modal_restraint" id="modal_restraint">
+    <div class="modal_wrapper">
+      <div class="modal_container">
+        <img class="modal_close modal_restraint_close" src="assets/img/icon_close.svg" alt="閉じる">
+        <img id="modal_img" src="assets/img/modal_restraint.png" alt="40万人以上が使っている診断サイト">
+        <div class="btn modal_close">入力に戻る</div>
+      </div>
+    </div>
+  </div>
+  <div class="modal modal_final" id="modal_final">
+    <div class="modal_wrapper">
+      <div class="modal_container">
+        <img class="modal_close modal_restraint_close" src="assets/img/icon_close.svg" alt="閉じる">
+        <div class="modal_final_contents" id="modal_final_contents">
+
+          <div class="chat_item chat_admin">
+            <div class="chat_admin_img"></div>
+            <div class="chat_admin_info">
+              <div class="chat_admin_text">
+                <div class="dot-flashing"></div>
+                <span class="late-open">現在、算定中ですが、結果を見ずにやめてしまいますか…？</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="btn modal_close">入力に戻る</div>
+      </div>
+    </div>
+  </div>
+  <form id="form" action="/../lp-18/thanks.php" method="post" style="display:none;">
+    <div id="results"><input type="text" name="ad" value="undefined"><input type="text" name="type" value="undefined">
+    </div>
+    <input type="hidden" name="_csrf_token_645a83a41868941e4692aa31e7235f2"
+      value="e4e3931209921b77571d06467484d1ec31c46898">
+  </form>
+  <div id="address_list" style="display:none;"></div>
+  <div id="scroll_bar" style="display:none;"></div>
+</body>
+
+</html>
