@@ -1,0 +1,62 @@
+// ------------------------------
+// フッター
+// ------------------------------
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  padding: 15px 0;
+  color: $white;
+  background: $main;
+  z-index: map-get($z, footer);
+
+  * {
+    text-align: center;
+    font-size: 12px;
+
+    @media ($sp) {
+      font-size: 10px;
+    }
+  }
+
+  @media ($sp) {
+    padding: 5px 0;
+    line-height: 1.3;
+    font-size: 10px;
+
+    .container {
+      text-align: center;
+    }
+  }
+
+  .container {
+    max-width: none;
+
+    @media ($sp) {
+      padding: 0;
+    }
+  }
+
+  a {
+    color: $white;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @media ($sp) {
+      font-size: 10px;
+    }
+  }
+}
+
+//フッター分の高さ確保
+body {
+  padding-bottom: 50px;
+
+  @media ($sp) {
+    padding-bottom: 25px;
+  }
+}

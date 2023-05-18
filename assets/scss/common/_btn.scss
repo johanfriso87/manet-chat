@@ -1,0 +1,27 @@
+// ------------------------------
+// ボタン系
+// ------------------------------
+
+.btn {
+  display: table;
+  padding: 15px 70px;
+  font-size: $large;
+  color: $white;
+  background: transparent linear-gradient(180deg, #FFB100 0%, #E58613 100%) 0% 0% no-repeat padding-box;
+  box-shadow: 3px 3px 6px #00000029;
+  border-radius: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    box-shadow: none;
+    background: transparent linear-gradient(180deg, #E58613 0%, #FFB100 100%) 0% 0% no-repeat padding-box;
+  }
+
+  @media($sp) {
+    padding: 10px 30px;
+    font-size: $normal;
+  }
+}
