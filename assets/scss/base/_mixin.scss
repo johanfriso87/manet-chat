@@ -1,0 +1,45 @@
+// 背景の中央配置
+@mixin backimg ($size: cover) {
+  background-size: $size;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+// flex
+@mixin flex($justify:space-between,$align-items: stretch) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: $justify;
+  align-items: $align-items;
+}
+
+// FontAwesome 擬似要素
+@mixin fontawesome ($content: "\f107") {
+  font-family: "Font Awesome 5 Free";
+  content: $content;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  font-weight: 900;
+}
+
+// IEでobject-fit対応
+@mixin objectfit {
+  object-fit: cover;
+  font-family:"object-fit:cover;";
+}
+
+// 縦書き
+@mixin tategaki {
+  -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: vertical-rl;
+}
+
+// 強調テキスト
+@mixin bigtext($size:$large) {
+  font-size: $size;
+  font-weight: 700;
+}
