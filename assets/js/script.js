@@ -6,8 +6,7 @@ function getAjaxPath() {
   if (location.host == "localhost") {
     var ajaxPath = "command";
   } else {
-    var ajaxPath =
-      location.protocol + "//" + location.host + "/command";
+    var ajaxPath = location.protocol + "//" + location.host + "/command";
   }
   // var ajaxPath = "https://gaihekitosou-support.jp/lp-55/command";
 
@@ -276,22 +275,33 @@ $(function () {
     }
   });
 
-  $(document).on("click", "input[type='checkbox']", function () {
-    const itemId = $(this).parents(".option_list").data("itemid");
-    const checkedBoxes = $("input[type=checkbox]:checked");
-    const nextButton = $(`#chat-next-btn-${itemId}`)[0];
-    const enable = checkedBoxes.length > 0;
-    if (enable) nextButton.removeAttribute("disabled");
-    else nextButton.disabled = true;
-    if (enable) {
-      let selected = "";
-      for (let i = 0; i < checkedBoxes.length; i++) {
-        selected += checkedBoxes[i].dataset.selected + ", <br>";
+  $(document).on(
+    "click",
+    "input[type='checkbox'], .multi_list__item__label-text",
+    function (event) {
+      event.stopPropagation();
+      if ($(event.target).is(".multi_list__item__label-text")) {
+        const checkbox = $(event.target)[0].parentElement.getElementsByTagName(
+          "input"
+        )[0];
+        checkbox.checked = !checkbox.checked;
       }
-      selected = selected.slice(0, -6);
-      nextButton.setAttribute("data-selected", selected);
+      const itemId = $(this).parents(".option_list").data("itemid");
+      const checkedBoxes = $("input[type=checkbox]:checked");
+      const nextButton = $(`#chat-next-btn-${itemId}`)[0];
+      const enable = checkedBoxes.length > 0;
+      if (enable) nextButton.removeAttribute("disabled");
+      else nextButton.disabled = true;
+      if (enable) {
+        let selected = "";
+        for (let i = 0; i < checkedBoxes.length; i++) {
+          selected += checkedBoxes[i].dataset.selected + ", <br>";
+        }
+        selected = selected.slice(0, -6);
+        nextButton.setAttribute("data-selected", selected);
+      }
     }
-  });
+  );
 
   $(document).on("input", "input[type='range']", function () {
     const itemId = $(this).parents(".option_list").data("itemid");

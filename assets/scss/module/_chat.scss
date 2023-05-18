@@ -369,6 +369,10 @@
             font-size: 18px;
           }
         }
+
+        &:hover {
+          cursor: none;
+        }
       }
       .chat_next_btn_wrap {
         text-align: center;
