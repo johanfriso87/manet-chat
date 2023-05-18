@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+// ------------------------------
+// z-index
+// ------------------------------
+
+$z: (
+ header: 3,
+ modal: 10,
+ footer: 20,
+);
+
+// ------------------------------
+// 色設定
+// ------------------------------
+
+$main: #084FB8;
+$d-blue: #3b7ad4;
+$h-blue: #6d9eeb;
+$l-blue: #9ac3ff;
+$black: #222222;
+$white: #fff;
+$gray: #d8d8d8;
+$brown: #6f552e;
+$d-brown: #4f3105;
+$orange: #ff8c00;
+$yellow: #f6cc7d;
+$base: #ffddbc;
+
+// ------------------------------
+// 文字サイズ
+// ------------------------------
+
+$small: 13px;
+$normal: 15px;
+$big: 18px;
+$large: 24px;
+
+// ------------------------------
+// レスポンシブ
+// ------------------------------
+
+$sp: "max-width: 768px";
+$pc: "min-width: 768px";
+$max-width: 840px;
+
+// ------------------------------
+// 個別CSS
+// ------------------------------
+
+$chat_name: 'マネットの窓口';
+$chat_img: '../img/admin.jpg';
+
+// ------------------------------
+// 指
+// ------------------------------
+
+@mixin hand {
+    position: absolute;
+    content: "";
+    width: 40px;
+    height: 40px;
+    background-image: url('../img/finger.png');
+    background-size: 40px 40px;
+    background-position: 50% 50%;
+    animation: hand .5s infinite;
+
+    // @media ($sp) {
+    //   width: 60px;
+    //   height: 60px;
+    // }
+}
+
+@keyframes hand {
+    0% {
+        transform: translateX(0)
+    }
+    50% {
+        transform: translateX(6px)
+    }
+    100% {
+        transform: translateX(0)
+    }
+}
+
+// ------------------------------
+// IMPORTS
+// ------------------------------
+
+// 基礎ファイル
+@import "base/mixin";
+@import "base/reset";
+
+// 共通パーツ
+@import "common/header";
+@import "common/footer";
+@import "common/btn";
+
+// 個別クラス
+@import "module/chat";
+@import "module/modal";
+@import "module/thanks";
