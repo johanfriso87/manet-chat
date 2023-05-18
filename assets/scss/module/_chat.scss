@@ -1,0 +1,911 @@
+// ------------------------------
+// チャット
+// ------------------------------
+
+.contents_wrapper {
+  width: calc(100vw - 400px + 85px);
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 160px calc(20px + 85px) 0 10px; // アイコン分
+  overflow: hidden;
+
+  @media ($sp) {
+    width: 100%;
+    padding: 160px 10px 15px 10px; // アイコン分
+  }
+}
+
+// ------------------------------
+// ユーザーの返答
+// ------------------------------
+
+.chat_user {
+  @include flex(flex-end, flex-end);
+  width: 320px;
+  margin: 0 0 50px auto;
+  animation: fadeIn 0.6s forwards;
+
+  @media ($sp) {
+    margin-bottom: 30px;
+  }
+
+  &::before {
+    margin-right: 15px;
+    content: "既読";
+    color: $d-blue;
+    opacity: 0;
+    animation: late-show 0.01s linear 0.3s forwards;
+
+    @media ($sp) {
+      font-size: $small;
+    }
+  }
+
+  & + & {
+    @media ($sp) {
+      margin-top: 0;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+//吹き出し部分
+.chat_user_text {
+  display: table;
+  position: relative;
+  margin-right: 15px;
+  padding: 17px 20px;
+  min-width: 180px;
+  min-height: 59px;
+  text-align: center;
+  border-radius: 10px;
+  color: $white;
+  background: $main;
+
+  @media ($sp) {
+    padding: 12px 10px;
+    font-size: 14px;
+    min-height: auto;
+  }
+
+  //吹き出し三角
+  &::after {
+    position: absolute;
+    content: "";
+    top: 9px;
+    right: -36px;
+    border-top: 18px solid transparent;
+    border-right: 21px solid transparent;
+    border-bottom: 18px solid transparent;
+    border-left: 21px solid $main;
+
+    @media ($sp) {
+      top: 6px;
+      right: -30px;
+    }
+  }
+}
+
+//訂正
+.chat_user_correction {
+  width: 100%;
+  padding-top: 10px;
+  text-align: right;
+  color: $d-blue;
+
+  & span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  @media ($sp) {
+    font-size: $small;
+  }
+}
+
+// ------------------------------
+// 運営の質問
+// ------------------------------
+
+//吹き出しwrapper
+.chat_admin {
+  @include flex(flex-start, flex-start);
+  margin-top: 20px;
+  margin-bottom: 50px;
+  max-width: 600px;
+
+  @media ($sp) {
+    margin-bottom: 30px;
+    margin-top: -20px;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+//コメントの代わりに入る中央配置の画像
+.chat_admin_center-img {
+  display: block;
+  margin: -20px 0px -20px auto;
+  max-height: 280px;
+
+  @media ($sp) {
+    max-height: 250px;
+    margin: 0 auto;
+  }
+}
+
+//プロフィール画像
+.chat_admin_img {
+  $size: 85px;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  @include backimg;
+  background-image: url("../img/admin.jpg");
+  background-color: $white;
+  border: 1px solid $main;
+
+  @media ($sp) {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+//コメントなどの欄
+.chat_admin_info {
+  width: calc(100% - 140px);
+  padding-left: 20px;
+
+  @media ($sp) {
+    width: calc(100vw - 100px);
+  }
+}
+
+//名前
+.chat_admin_name {
+  width: 100%;
+  margin-left: 5px;
+  color: $d-blue;
+
+  @media ($sp) {
+    font-size: $small;
+  }
+}
+
+//吹き出し枠
+.chat_admin_text {
+  display: table;
+  position: relative;
+  margin-top: 5px;
+  padding: 18px;
+  // min-width: 290px;
+  min-height: 70px;
+  font-size: $big;
+  font-weight: 700;
+  background: $white;
+  border: solid 2px $main;
+  border-radius: 10px;
+
+  @media ($sp) {
+    min-height: auto;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    top: 25px;
+  }
+
+  &:before {
+    left: -24px;
+    margin-top: -12px;
+    border: 12px solid transparent;
+    border-right: 12px solid $white;
+    z-index: 2;
+  }
+
+  &:after {
+    left: -29px;
+    margin-top: -14px;
+    border: 14px solid transparent;
+    border-right: 14px solid $main;
+    z-index: 1;
+  }
+}
+
+//通常選択肢
+.admin_chat_options {
+  margin: -20px auto 50px auto;
+  width: 100%;
+  max-width: 600px;
+
+  ul {
+    @include flex;
+    padding: 8px 20px 20px 20px;
+    background: $h-blue;
+    width: auto;
+    border-radius: 10px;
+
+    &::after {
+      content: "";
+      width: 31%;
+    }
+  }
+
+  li {
+    @include flex(center, center);
+    margin-top: 12px;
+    padding: 11px;
+    width: 31%;
+    text-align: center;
+    font-weight: 700;
+    font-size: $big;
+    border-radius: 10px;
+    background: $white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+
+    .scoped-rangeValue {
+      font-size: 14px;
+      font-weight: 700;
+      text-align: right;
+      margin: 12px;
+    }
+    
+    .scoped-rangeBox {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 15px 0 15px;
+      button {
+        appearance: none;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        border-radius: 4px;
+        background: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
+        color: #0c5ed4;
+      }
+      input[type="range"] {
+        flex-grow: 1;
+        -webkit-appearance: none;
+        appearance: none;
+        background: #ccc;
+        width: 60%;
+        height: 4px;
+        margin: 15px;
+        border-radius: 8px;
+      }
+    }
+
+    @media ($sp) {
+      width: 48%;
+      font-size: 14px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: none;
+    }
+  }
+
+  &--half {
+    ul {
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+  
+      @media ($sp) {
+        width: 100%;
+      }
+  
+      li {
+        width: 48%;
+      }
+    }
+  }
+
+  &--multiselect {
+    ul {
+      flex-direction: column;
+      padding: 8px 20px 10px 20px;
+
+      li {
+        width: 100%;
+        justify-content: flex-start;
+
+        .multi_list__item__label {
+          align-items: center;
+          padding: 3px;
+          display: flex;
+
+          &-check {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 7px;
+
+            input {
+              display: inline !important;
+              width: 20px;
+              height: 20px;
+              border: 1px solid #333;
+              border-radius: 0;
+              background: #fff;
+              position: relative;
+
+              &::before {
+                content: "✓";
+                position: absolute;
+                font-size: 1.2em;
+                right: 0;
+                top: -0.3em;
+                visibility: hidden;
+              }
+              &:checked {
+                &::before {
+                  visibility: visible;
+                }
+              }
+            }
+          }
+          &-text {
+            font-weight: 800;
+            font-size: 18px;
+          }
+        }
+      }
+      .chat_next_btn_wrap {
+        text-align: center;
+
+        button {
+          font-weight: 800;
+          background: rgba(0,0,0,0) linear-gradient(180deg, $h-blue 0%, $d-blue 100%) 0% 0% no-repeat padding-box;
+          box-shadow: 0 3px 6px rgba(0,0,0,.16);
+          position: relative;
+          border-radius: 50px;
+          color: #fff;
+          text-align: center;
+          margin-top: 10px;
+
+          @media ($sp) {
+            font-size: 16px;
+            padding: 5px 10px;
+          }
+        }
+      }
+    }
+  }
+
+  &--scroll {
+    ul {
+      flex-direction: column;
+      padding: 8px 20px 10px 20px;
+
+      li {
+        width: 100%;
+      }
+      .chat_next_btn_wrap {
+        text-align: center;
+
+        button {
+          font-weight: 800;
+          background: rgba(0,0,0,0) linear-gradient(180deg, $h-blue 0%, $d-blue 100%) 0% 0% no-repeat padding-box;
+          box-shadow: 0 3px 6px rgba(0,0,0,.16);
+          position: relative;
+          border-radius: 50px;
+          color: #fff;
+          text-align: center;
+          margin-top: 10px;
+
+          @media ($sp) {
+            font-size: 16px;
+            padding: 5px 10px;
+          }
+        }
+      }
+    }
+  }
+
+  &--dropdown {
+    ul {
+      flex-direction: column;
+      padding: 8px 20px 10px 20px;
+
+      li {
+        display: block;
+        width: 100%;
+        padding: 0;
+        
+        @media ($sp) {
+          width: 100%;
+        }
+
+        select {
+          padding: 5px 10px;
+          background: #fff;
+          border: none;
+          border-radius: 5px;
+          -webkit-box-flex: 1;
+          -webkit-flex-grow: 1;
+          -ms-flex-positive: 1;
+          flex-grow: 1;
+          
+          @media ($sp) {
+            width: 100%;
+          }
+        }
+      }
+
+      .chat_next_btn_wrap {
+        text-align: center;
+
+        button {
+          font-weight: 800;
+          background: rgba(0,0,0,0) linear-gradient(180deg, $h-blue 0%, $d-blue 100%) 0% 0% no-repeat padding-box;
+          box-shadow: 0 3px 6px rgba(0,0,0,.16);
+          position: relative;
+          border-radius: 50px;
+          color: #fff;
+          text-align: center;
+          margin-top: 10px;
+
+          @media ($sp) {
+            font-size: 16px;
+            padding: 5px 10px;
+          }
+        }
+      }
+    }
+  }
+
+  //ボタン形式の選択肢
+  &--buttons {
+    margin: -20px auto 50px auto;
+    width: 100%;
+    max-width: 600px;
+
+    ul {
+      @include flex;
+      padding: 8px 20px 20px 20px;
+      width: 100%;
+      background: $yellow;
+      border-radius: 10px;
+    }
+
+    li {
+      margin-top: 12px;
+      padding: 11px;
+      width: 24%;
+      text-align: center;
+      font-weight: 700;
+      color: $white;
+      border-radius: 10px;
+      background: transparent linear-gradient(180deg, #ffb100 0%, #e58613 100%) 0% 0% no-repeat padding-box;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+
+      img {
+        height: 50px;
+      }
+
+      span {
+        @include flex(center, center);
+        text-align: center;
+        padding-top: 10px;
+        height: 60px;
+
+        b {
+          text-align: center;
+        }
+      }
+
+      @media ($sp) {
+        width: 48%;
+      }
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: none;
+      }
+    }
+  }
+
+  //ラジオボタン形式の画像あり選択肢
+  &--radio {
+    margin: -20px auto 0;
+    width: 100%;
+    max-width: 600px;
+
+    ul {
+      @include flex;
+      width: 100%;
+    }
+
+    li {
+      margin-bottom: 12px;
+      width: 48%;
+
+      @media ($sp) {
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+      &:active p,
+      &:active img {
+        box-shadow: none;
+      }
+
+      img {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 160px;
+        border: 5px solid $white;
+        object-fit: cover;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+
+        @media ($sp) {
+          height: 100px;
+          margin-bottom: 2px;
+          border: 2px solid $white;
+        }
+      }
+
+      span {
+        font-weight: 700;
+
+        @media ($sp) {
+          font-size: 13px;
+        }
+
+        &::before {
+          display: inline-block;
+          content: "";
+          margin-top: -3px;
+          margin-right: 10px;
+          vertical-align: middle;
+          width: 1em;
+          height: 1em;
+          background: $white;
+          border-radius: 50%;
+          border: 3px solid $orange;
+
+          @media ($sp) {
+            margin-right: 4px;
+            width: 0.8em;
+            height: 0.8em;
+            border-width: 2px;
+          }
+        }
+      }
+
+      p {
+        margin-top: 10px;
+        padding: 10px;
+        font-weight: 700;
+        text-align: center;
+        background: $white;
+        border-radius: 10px;
+        border: 2px solid $orange;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+      }
+    }
+  }
+
+  //日本地図ボタン
+  &--japan_map{
+    margin: -20px auto 50px auto;
+    width: 100%;
+    max-width: 600px;
+
+    ul {
+      display: block;
+      width: 100%;
+      height: 50vh;
+      background-color: none;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 10px;
+      position: relative;
+  
+      li {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        border: 2px #333 solid;
+        border-radius: 7px;
+        transition: 0.2s;
+        box-shadow: 0px 3px 6px rgba(0,0,0,0.5);
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: none;
+        }
+        
+        
+  
+        span {
+          display: block;
+          color: $black;
+          font-size: $large;
+          font-weight: 800;
+          background-color: $white;
+          border: 3px #333 solid;
+          border-radius: 5px;
+          margin: 3px;
+          padding: 5px;
+  
+          @media ($sp) {
+            font-size: $small;
+          }      
+        }
+      }
+
+    }
+
+
+    #北海道・東北_map{
+      width: 20%;
+      height: 45%;
+      top: 0%;
+      left: 80%;
+      background-color: #3355dd;
+    }
+    
+    #関東_map{
+      width: 20%;
+      height: 35%;
+      top: 45%;
+      left: 80%;
+      background-color: #eedd55;
+
+    }
+    
+    #北陸・甲信越_map{
+      width: 20%;
+      height: 25%;
+      top: 35%;
+      left: 60%;
+      background-color: #33dd66;
+    }
+    
+    #東海_map{
+      width: 20%;
+      height: 25%;
+      top: 60%;
+      left: 60%;
+      background-color: #ee6600;
+    }
+
+    #関西_map{
+      width: 15%;
+      height: 40%;
+      top: 45%;
+      left: 45%;
+      background-color: #dd4444;
+    }
+
+    #中国_map{
+      width: 24%;
+      height: 19%;
+      top: 45%;
+      left: 21%;
+      background-color: #dd4477;
+    }
+
+    #四国_map{
+      width: 22%;
+      height: 19%;
+      top: 66%;
+      left: 21%;
+      background-color: #dd44bb;
+    }
+
+    #九州・沖縄_map{
+      width: 19%;
+      height: 55%;
+      top: 45%;
+      left: 0%;
+      background-color: #9944cc;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+//都道府県リスト
+.address_list {
+  margin: -20px auto 50px auto;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  background: $yellow;
+  border-radius: 7px;
+
+  dl {
+    height: 50vh;
+    padding: 10px 15px;
+    background: $white;
+    overflow: scroll;
+  }
+
+  dt {
+    margin-top: 15px;
+    padding-bottom: 5px;
+    font-weight: 700;
+    font-size: $big;
+    border-bottom: 2px solid $gray;
+  }
+
+  dd {
+    padding: 5px 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+.address_list_title {
+  padding: 5px 10px;
+  font-weight: 700;
+  font-size: $big;
+  color: $white;
+  background: $orange;
+  border-radius: 10px 10px 0 0;
+}
+
+//フォーム欄
+.user_form_wrapper {
+  margin: -20px auto 50px auto;
+  width: 100%;
+  max-width: 600px;
+}
+.user_form {
+  padding: 0 20px 25px 20px;
+  background: $yellow;
+  border-radius: 10px;
+
+  label {
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    font-weight: 500;
+  }
+
+  input {
+    padding: 5px 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  }
+}
+
+// ボタン
+.user_form_btn {
+  display: table;
+  margin: 20px auto 0 auto;
+  width: 70%;
+  text-align: center;
+  padding: 17px 70px;
+  font-weight: 700;
+  font-size: $big;
+  color: $white;
+  border: none;
+  border-radius: 10px;
+  background: transparent linear-gradient(180deg, $main 0%, $d-blue 100%) 0% 0% no-repeat padding-box;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+
+  &.inactive {
+    background: $gray;
+
+    &:before {
+      display: none;
+    }
+
+    &:hover {
+      cursor: default;
+    }
+    &:active {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+      background: $gray;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    box-shadow: none;
+    background: transparent linear-gradient(180deg, $d-blue 0%, $h-blue 100%) 0% 0% no-repeat padding-box;
+  }
+
+  position: relative;
+  &:before {
+    @include hand;
+    top: 17px;
+    right: -12px;
+  
+    @media ($pc) {
+      top: 12px;
+      right: -11px;
+    }
+  }
+}
+
+//訂正ボタンを非表示にする
+.modify--inactive {
+  opacity: 0;
+  pointer-events: none;
+}
+
+// ------------------------------
+// 表示遅延
+// ------------------------------
+
+@keyframes late-show {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes late-open {
+  to {
+    opacity: 1;
+    width: auto;
+    height: auto;
+    overflow: auto;
+  }
+}
+@keyframes late-hide {
+  to {
+    margin: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+}
+
+.dot-flashing {
+  margin: 10px 15px;
+  animation: late-hide 0.01s linear 1s forwards;
+}
+.late-open {
+  display: block;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  animation: late-open 0.01s linear 1s forwards;
+}
+
+//最後の算定メッセージ
+#last_msg {
+  display: none;
+}
