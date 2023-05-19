@@ -285,9 +285,6 @@ $(function () {
           "input"
         )[0];
         checkbox.checked = !checkbox.checked;
-      } else if ($(event.target).is(".caution-toggle")) {
-        $("#caution")[0].hidden = true;
-        return;
       }
       const itemId = $(this).parents(".option_list").data("itemid");
       const checkedBoxes = $("input[type=checkbox]:checked");
@@ -305,6 +302,10 @@ $(function () {
       }
     }
   );
+
+  $(document).on("click", ".p-caution_accordion_title", function () {
+    $("#caution")[0].hidden = true;
+  });
 
   $(document).on("click", ".caution-label", function () {
     $("#caution")[0].hidden = false;
