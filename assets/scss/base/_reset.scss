@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: none;
+}
+
+body,
+html,
+div,
+p,
+span,
+blockquote,
+u,
+s,
+i,
+b,
+table,
+tr,
+th,
+td,
+ul,
+ol,
+dl,
+li,
+dt,
+dd,
+strong,
+h1,
+h2,
+h3,
+h4,
+h5,
+em,
+header,
+footer,
+nav,
+aside,
+section,
+input,
+select,
+option,
+textarea,
+button {
+  margin: 0;
+  padding: 0;
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  text-align: justify;
+  text-justify: inter-ideograph;
+  color: inherit;
+  outline: none;
+}
+
+body {
+  font-weight: 400;
+  font-size: 16px;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", sans-serif;
+  line-height: 1.6;
+  background-repeat: repeat;
+  background-image: url("../img/background.png");
+  color: $black;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: none;
+  vertical-align: middle;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  transition-property: all;
+  transition: 0.3s linear;
+}
+
+table {
+  border-collapse: collapse;
+}
