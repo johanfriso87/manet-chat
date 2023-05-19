@@ -1256,21 +1256,21 @@ function setNextHtml(data) {
     });
 
     // 算定完了のチャットを15秒後に追加
-    setTimeout(() => {
-      let lastChatHtml = `
-        <div class="chat_item chat_admin">
-          <div class="chat_admin_img"></div>
-          <div class="chat_admin_info">
-            <div class="chat_admin_name">マネット</div>
-            <div class="chat_admin_text">
-              <div class="dot-flashing"></div>
-              <span class="late-open">今すぐ確認してみる</span>
-            </div>
-          </div>
-        </div>
-      `;
-      $(".user_form_wrapper").before(lastChatHtml);
-    }, 5000);
+    // setTimeout(() => {
+    //   let lastChatHtml = `
+    //     <div class="chat_item chat_admin">
+    //       <div class="chat_admin_img"></div>
+    //       <div class="chat_admin_info">
+    //         <div class="chat_admin_name">マネット</div>
+    //         <div class="chat_admin_text">
+    //           <div class="dot-flashing"></div>
+    //           <span class="late-open">今すぐ確認してみる</span>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   `;
+    //   $(".user_form_wrapper").before(lastChatHtml);
+    // }, 5000);
   }
 
   //表示
