@@ -390,7 +390,6 @@
         border-radius: 50px;
         color: #fff;
         text-align: center;
-        margin: 20px auto;
         transition: all .3s;
         animation: bounce 3s ease-in-out infinite;
 
@@ -480,7 +479,6 @@
         border-radius: 50px;
         color: #fff;
         text-align: center;
-        margin: 20px auto;
         transition: all .3s;
         animation: bounce 3s ease-in-out infinite;
         
@@ -577,6 +575,10 @@
             width: 100%;
           }
         }
+
+        .choices__list--dropdown {
+          z-index: 9;
+        }
       }
     }
     
@@ -591,7 +593,6 @@
         border-radius: 50px;
         color: #fff;
         text-align: center;
-        margin: 20px auto;
         padding: 14px 30px;
         transition: all .3s;
         animation: bounce 3s ease-in-out infinite;
