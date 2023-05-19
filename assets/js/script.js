@@ -1111,7 +1111,7 @@ function setNextHtml(data) {
       QmodalFlg = 0;
       html += '<div class="chat_admin_img"></div>';
       html += '<div class="chat_admin_info">';
-      html += '<div class="chat_admin_name">マネットの窓口</div>';
+      html += '<div class="chat_admin_name">マネット</div>';
       html += '<div class="chat_admin_text">';
       html += '<div class="dot-flashing"></div>';
       html += '<span class="late-open">' + elem + "</span>";
@@ -1187,13 +1187,14 @@ function setNextHtml(data) {
       `;
     });
     optionsHtml += "</li>";
+    optionsHtml += "</ul>";
+
     optionsHtml += `
       <div class="chat_next_btn_wrap">
         <button type="button" id="chat-next-btn-${data["id"]}" class="chat__form-btn" data-selected="" data-next="${data["nextId"]}" disabled>次に進む</button>
       </div>
     `;
 
-    optionsHtml += "</ul>";
     optionsHtml += "</div>";
   } else if (type == "scrollbar") {
     optionsHtml +=
@@ -1213,14 +1214,13 @@ function setNextHtml(data) {
     optionsHtml += `<button type="button" class="range-plus" id="range-plus-${data["id"]}">+</button>`;
     optionsHtml += "</div>";
     optionsHtml += "</li>";
+    optionsHtml += "</ul>";
 
     optionsHtml += `
       <div class="chat_next_btn_wrap">
         <button type="button" id="chat-next-btn-${data["id"]}" class="chat__form-btn" data-selected="" data-next="${data["nextId"]}">次に進む</button>
       </div>
     `;
-
-    optionsHtml += "</ul>";
     optionsHtml += "</div>";
   } else if (type == "dropdown") {
     optionsHtml += `
@@ -1238,10 +1238,11 @@ function setNextHtml(data) {
     optionsHtml += `
             </select>
           </li>
-          <div class="chat_next_btn_wrap">
-            <button type="button" id="chat-next-btn-${data["id"]}" class="chat__form-btn" data-selected="" data-next="${data["nextId"]}" disabled>次に進む</button>
-          </div>
         </ul>
+        
+        <div class="chat_next_btn_wrap">
+          <button type="button" id="chat-next-btn-${data["id"]}" class="chat__form-btn" data-selected="" data-next="${data["nextId"]}" disabled>次に進む</button>
+        </div>
       </div>
     `;
   } else if (type == "last") {
@@ -1260,7 +1261,7 @@ function setNextHtml(data) {
         <div class="chat_item chat_admin">
           <div class="chat_admin_img"></div>
           <div class="chat_admin_info">
-            <div class="chat_admin_name">マネットの窓口</div>
+            <div class="chat_admin_name">マネット</div>
             <div class="chat_admin_text">
               <div class="dot-flashing"></div>
               <span class="late-open">今すぐ確認してみる</span>
