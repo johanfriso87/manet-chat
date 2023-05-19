@@ -1247,13 +1247,11 @@ function setNextHtml(data) {
     `;
   } else if (type == "last") {
     const options = isPurpleAnswer() ? data["options2"] : data["options1"];
+    optionsHtml += `<div class="chat_item chat_options user_form_wrapper">`;
     $.each(options, function (index, item) {
-      optionsHtml += `
-        <div class="chat_item chat_options user_form_wrapper">
-          <a link="#" class="user_form_btn">${item}</a>
-        </div>
-      `;
+      optionsHtml += `<a href="#" class="user_form_btn ${item}"></a>`;
     });
+    optionsHtml += `</div>`;
 
     // 算定完了のチャットを15秒後に追加
     // setTimeout(() => {

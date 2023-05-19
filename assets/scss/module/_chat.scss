@@ -968,6 +968,7 @@
   margin: -20px auto 50px auto;
   width: 100%;
   max-width: 600px;
+  display: flex;
 }
 .user_form {
   padding: 0 20px 25px 20px;
@@ -993,17 +994,20 @@
 // ボタン
 .user_form_btn {
   display: table;
-  margin: 20px auto 0 auto;
-  width: 70%;
+  margin-top: 20px;
+  width: 25%;
   text-align: center;
-  padding: 17px 70px;
+  padding: 17px;
   font-weight: 700;
   font-size: $big;
   color: $white;
   border: none;
-  border-radius: 10px;
-  background: transparent linear-gradient(180deg, $main 0%, $d-blue 100%) 0% 0% no-repeat padding-box;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  // border-radius: 10px;
+  // background: transparent linear-gradient(180deg, $main 0%, $d-blue 100%) 0% 0% no-repeat padding-box;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 
   &.inactive {
     background: $gray;
@@ -1031,16 +1035,32 @@
   }
 
   position: relative;
-  &:before {
-    @include hand;
-    top: 17px;
-    right: -12px;
+  // &:before {
+  //   @include hand;
+  //   top: 17px;
+  //   right: -12px;
   
-    @media ($pc) {
-      top: 12px;
-      right: -11px;
-    }
-  }
+  //   @media ($pc) {
+  //     top: 12px;
+  //     right: -11px;
+  //   }
+  // }
+}
+
+.aiful {
+  background-image: url(../img/logo-aiful.png);
+}
+
+.promise {
+  background-image: url(../img/logo-promise.png);
+}
+
+.acom {
+  background-image: url(../img/logo-acom.png);
+}
+
+.mobit {
+  background-image: url(../img/logo-smbc.png);
 }
 
 //訂正ボタンを非表示にする
