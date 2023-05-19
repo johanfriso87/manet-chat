@@ -4,29 +4,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $nextId = $_GET['id'];
         $data = array();
         switch ($nextId) {
-            case "q1":
+            case "q23":
                 $data = array(
                     'id' => $nextId,
-                    'nextId' => 'q2',
+                    'nextId' => 'q01',
                     'questions' => array(
                         '早速、診断を始めましょう。',
                         'まず、お客様のご希望についてお伺いします！',
                         'どんなカードローンをご希望ですか？(複数選択可）',
                     ),
                     'options' => array(
-                        '最短30分で借りられる',
-                        '誰にもバレずに内緒で借りれる',
-                        '金利が低い',
-                        '審査に通りやすい',
-                        '口コミの評価が高い',
+                        '最短30分で借りられる' => 'a101',
+                        '誰にもバレずに内緒で借りれる' => 'a100',
+                        '金利が低い' => '',
+                        '審査に通りやすい' => 'a99',
+                        '口コミの評価が高い' => '',
                     ),
                     'type' => 'multiselect',
                 );
                 break;
-            case "q2":
+            case "q01":
                 $data = array(
                     'id' => $nextId,
-                    'nextId' => 'q3',
+                    'nextId' => 'q02',
                     'questions' => array(
                         'いくら借りたいですか？（大体で構いません）'
                     ),
@@ -34,62 +34,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     'type' => 'scrollbar',
                 );
                 break;
-            case "q3":
+            case "q02":
                 $data = array(
                     'id' => $nextId,
-                    'nextId' => 'q4',
+                    'nextId' => 'q24',
                     'questions' => array(
                         'いつまでに借りたいですか？',
                     ),
                     'options' => array(
-                        '1時間以内',
-                        '今日中',
-                        '3日以内',
-                        '1週間以内',
-                        'その他',
+                        '1時間以内' => 'a05',
+                        '今日中' => 'a06',
+                        '3日以内' => 'a07',
+                        '1週間以内' => 'a08',
+                        'その他' => 'a09',
                     ),
                 );
                 break;
-            case "q4":
+            case "q24":
                 $data = array(
                     'id' => $nextId,
-                    'nextId' => 'q6',
+                    'nextId' => 'q06',
                     'questions' => array(
                         'お受け取りはどちらをご希望ですか？',
                     ),
                     'options' => array(
-                        'コンビニATM',
-                        '口座振込',
+                        'コンビニATM' => 'a104',
+                        '口座振込' => 'a103',
                     ),
                 );
                 break;
-            case "q6":
+            case "q06":
                 $data = array(
                     'id' => $nextId,
-                    'nextId' => 'q7',
+                    'nextId' => 'q10',
                     'questions' => array(
                         'ありがとうございます！診断完了までもう少しです。',
                         'お客様についてもいくつか教えてください！',
                         'あなたのご職業はどちらですか？',
                     ),
                     'options' => array(
-                        '公務員',
-                        '正社員',
-                        '契約社員',
-                        '派遣社員',
-                        'パート/アルバイト',
-                        '専業主婦',
-                        '学生',
-                        '個人事業主/経営者',
-                        '無職',
+                        '公務員' => 'a25',
+                        '正社員' => 'a26',
+                        '契約社員' => 'a27',
+                        '派遣社員' => 'a28',
+                        'パート/アルバイト' => 'a29',
+                        '専業主婦' => 'a30',
+                        '学生' => 'a31',
+                        '個人事業主/経営者' => 'a32',
+                        '無職' => 'a33',
                     ),
                     'type' => 'dropdown',
                 );
                 break;
-            case "q7":
+            case "q10":
                 $data = array(
                     'id' => $nextId,
-                    'nextId' => 'q8',
+                    'nextId' => 'q25',
                     'questions' => array(
                         '年収はどのくらいですか？'
                     ),
@@ -97,32 +97,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     'type' => 'scrollbar',
                 );
                 break;
-            case "q8":
+            case "q25":
                 $data = array(
                     'id' => $nextId,
-                    'nextId' => 'q9',
+                    'nextId' => 'q21',
                     'questions' => array(
                         '収入証明書は手元にありますか',
                     ),
                     'options' => array(
-                        'はい',
-                        'いいえ',
+                        'はい' => 'a105',
+                        'いいえ' => 'a106',
                     ),
                 );
                 break;
-            case "q9":
+            case "q21":
                 $data = array(
                     'id' => $nextId,
                     'questions' => array(
                         '過去に借り入れをしたことはありますか？',
                     ),
                     'options' => array(
-                        'はい' => 'q10',
-                        'いいえ' => 'last',
+                        // 'はい' => 'q10',
+                        'はい' => 'a93',
+                        // 'いいえ' => 'last',
+                        'いいえ' => 'a92',
                     ),
                 );
                 break;
-            case "q10":
+            case "q93":
                 $data = array(
                     'id' => $nextId,
                     'nextId' => 'last',
@@ -130,8 +132,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                         '過去に延滞経験はありますか？',
                     ),
                     'options' => array(
-                        'はい',
-                        'いいえ',
+                        'はい' => 'a52',
+                        'いいえ' => 'a50',
                     ),
                 );
                 break;

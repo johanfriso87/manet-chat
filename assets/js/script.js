@@ -231,8 +231,9 @@ $(function () {
     }
 
     const nextId = $(this).data("next");
+    const answer = $(this).data("answer");
 
-    if (nextId == "q1") {
+    if (nextId == "q23") {
       $(".first-modal__loading__container").show();
       setTimeout(function () {
         $(".first-modal__loading__container").hide();
@@ -259,6 +260,8 @@ $(function () {
       let inputHtml =
         '<input type="text" name="' + itemId + '" value="' + selected + '">';
       $("#results").append(inputHtml);
+      $("#parameter")[0].value += itemId;
+      console.log($("#parameter")[0].value);
 
       //オプションを非表示にする
       removeOptionsHtml();
@@ -266,6 +269,8 @@ $(function () {
       scrollToBottom();
 
       //結果を吹き出しとして挿入
+      $("#parameter")[0].value += answer;
+      console.log($("#parameter")[0].value);
       setAnswerHtml(itemId, selected);
 
       //念のため「訂正する」非表示に
@@ -294,11 +299,14 @@ $(function () {
       else nextButton.disabled = true;
       if (enable) {
         let selected = "";
+        let answer = "";
         for (let i = 0; i < checkedBoxes.length; i++) {
           selected += checkedBoxes[i].dataset.selected + ", <br>";
+          answer += checkedBoxes[i].value;
         }
         selected = selected.slice(0, -6);
         nextButton.setAttribute("data-selected", selected);
+        nextButton.setAttribute("data-answer", answer);
       }
     }
   );
@@ -313,11 +321,31 @@ $(function () {
 
   $(document).on("input", "input[type='range']", function () {
     const itemId = $(this).parents(".option_list").data("itemid");
-    $(`#scoped-rangeValue-${itemId}`).text($(this).val() + "万円");
+    const value = $(this).val();
+    $(`#scoped-rangeValue-${itemId}`).text(value + "万円");
     $(`#chat-next-btn-${itemId}`)[0].setAttribute(
       "data-selected",
-      $(this).val() + "万円"
+      value + "万円"
     );
+    const answer =
+      itemId == "q01"
+        ? value <= 10
+          ? "a01"
+          : value <= 50
+          ? "a02"
+          : value <= 100
+          ? "a03"
+          : "a04"
+        : value <= 120
+        ? "a45"
+        : value <= 300
+        ? "a46"
+        : value <= 500
+        ? "a47"
+        : value <= 700
+        ? "a48"
+        : "a49";
+    $(`#chat-next-btn-${itemId}`)[0].setAttribute("data-answer", answer);
   });
 
   $(document).on("click", ".range-minus", function () {
@@ -331,6 +359,26 @@ $(function () {
       "data-selected",
       $(this).val() + "万円"
     );
+    const value = range.val();
+    const answer =
+      itemId == "q01"
+        ? value <= 10
+          ? "a01"
+          : value <= 50
+          ? "a02"
+          : value <= 100
+          ? "a03"
+          : "a04"
+        : value <= 120
+        ? "a45"
+        : value <= 300
+        ? "a46"
+        : value <= 500
+        ? "a47"
+        : value <= 700
+        ? "a48"
+        : "a49";
+    $(`#chat-next-btn-${itemId}`)[0].setAttribute("data-answer", answer);
   });
 
   $(document).on("click", ".range-plus", function () {
@@ -344,15 +392,37 @@ $(function () {
       "data-selected",
       $(this).val() + "万円"
     );
+    const value = range.val();
+    const answer =
+      itemId == "q01"
+        ? value <= 10
+          ? "a01"
+          : value <= 50
+          ? "a02"
+          : value <= 100
+          ? "a03"
+          : "a04"
+        : value <= 120
+        ? "a45"
+        : value <= 300
+        ? "a46"
+        : value <= 500
+        ? "a47"
+        : value <= 700
+        ? "a48"
+        : "a49";
+    $(`#chat-next-btn-${itemId}`)[0].setAttribute("data-answer", answer);
   });
 
   $(document).on("change", ".select-job", function () {
     const itemId = $(this).parents(".option_list").data("itemid");
+    const answer = $(this)[0].selectedOptions[0].value;
     const nextButton = $(`#chat-next-btn-${itemId}`)[0];
     const enable = $(this)[0].value != "";
     if (enable) {
       nextButton.removeAttribute("disabled");
       nextButton.setAttribute("data-selected", $(this)[0].textContent);
+      nextButton.setAttribute("data-answer", answer);
     } else nextButton.disabled = true;
   });
 
@@ -360,11 +430,19 @@ $(function () {
     const itemId = $(this).data("itemid");
     const nextId = $(this).data("next");
     const selected = $(this)[0].dataset.selected;
-    if (nextId == "q2" || nextId == "q3" || nextId == "q7" || nextId == "q8") {
+    const answer = $(this)[0].dataset.answer;
+    if (
+      nextId == "q01" ||
+      nextId == "q02" ||
+      nextId == "q10" ||
+      nextId == "q25"
+    ) {
       //送信データ用にHTML用意
       let inputHtml =
         '<input type="text" name="' + itemId + '" value="' + selected + '">';
       $("#results").append(inputHtml);
+      $("#parameter")[0].value += itemId + answer;
+      console.log($("#parameter")[0].value);
 
       //オプションを非表示にする
       removeOptionsHtml();
@@ -391,6 +469,11 @@ $(function () {
 
     //回答に対応する質問ID
     let itemId = $(this).parents(".chat_user").data("itemid");
+
+    let answer = $("#parameter")[0].value;
+    answer = answer.slice(0, answer.indexOf(itemId));
+    $("#parameter")[0].value = answer;
+    console.log($("#parameter")[0].value);
 
     //回答のindex番号
     let answerIndex = $("#chats .chat_item").index(
@@ -1047,7 +1130,7 @@ function setNextHtml(data) {
   $.each(data["questions"], function (idx, elem) {
     if (data["type"] == "last") {
       const amount = Math.floor(
-        Number($('input[name="q7"]')?.val().slice(0, -2)) / 3
+        Number($('input[name="q10"]')?.val().slice(0, -2)) / 3
       );
       elem = elem.replace("[AMOUNT]", amount);
     }
@@ -1168,12 +1251,13 @@ function setNextHtml(data) {
     }
     optionsHtml += `<ul class="option_list" data-itemid="${data["id"]}">`;
     if (data["nextId"])
-      $.each(data["options"], function (index, item) {
-        optionsHtml += `<li class="option" data-selected="${item}" data-reply="${data["replies"]}" data-next="${data["nextId"]}"><span>${item}</span></li>`;
+      $.each(data["options"], function (item, answerId) {
+        optionsHtml += `<li class="option" data-selected="${item}" data-answer="${answerId}" data-reply="${data["replies"]}" data-next="${data["nextId"]}"><span>${item}</span></li>`;
       });
     else
-      $.each(data["options"], function (item, nextId) {
-        optionsHtml += `<li class="option" data-selected="${item}" data-reply="${data["replies"]}" data-next="${nextId}"><span>${item}</span></li>`;
+      $.each(data["options"], function (item, answerId) {
+        const nextId = answerId == "a93" ? "q93" : "last";
+        optionsHtml += `<li class="option" data-selected="${item}" data-answer="${answerId}" data-reply="${data["replies"]}" data-next="${nextId}"><span>${item}</span></li>`;
       });
     optionsHtml += "</ul>";
     optionsHtml += "</div>";
@@ -1184,11 +1268,11 @@ function setNextHtml(data) {
 
     optionsHtml +=
       '<li class="option" data-selected="" data-next="" data-is_multiselect="true">';
-    $.each(data["options"], function (index, item) {
+    $.each(data["options"], function (item, answerId) {
       optionsHtml += `
         <div class="multi_list__item__label">
           <div class="multi_list__item__label-check">
-            <input type="checkbox" data-selected="${item}" name="multi-item[]" value="${index}">
+            <input type="checkbox" data-selected="${item}" name="multi-item[]" value="${answerId}">
           </div>
           <div class="multi_list__item__label-text">${item}</div>
         </div>
@@ -1217,7 +1301,7 @@ function setNextHtml(data) {
     optionsHtml += `<input type="range" id="range-${
       data["id"]
     }" name="loan_amount" min="0" max="${
-      data["id"] == "q2" ? 500 : 1000
+      data["id"] == "q01" ? 500 : 1000
     }" step="10" value="0">`;
     optionsHtml += `<button type="button" class="range-plus" id="range-plus-${data["id"]}">+</button>`;
     optionsHtml += "</div>";
@@ -1238,9 +1322,9 @@ function setNextHtml(data) {
             <select name="inquiry_job" id="select-job" class="select-job">
               <option value="">選択してください</option>
     `;
-    $.each(data["options"], function (index, item) {
+    $.each(data["options"], function (item, answerId) {
       optionsHtml += `
-        <option value="${index}">${item}</option>
+        <option value="${answerId}">${item}</option>
       `;
     });
     optionsHtml += `
@@ -1256,8 +1340,17 @@ function setNextHtml(data) {
   } else if (type == "last") {
     const options = isPurpleAnswer() ? data["options2"] : data["options1"];
     optionsHtml += `<div class="chat_item chat_options user_form_wrapper">`;
+    const parameter = $("#parameter")[0].value;
+    const number = {
+      promise: 1,
+      acom: 4,
+      mobit: 7,
+      aiful: 8,
+    };
     $.each(options, function (index, item) {
-      optionsHtml += `<a href="#" class="user_form_btn ${item}"></a>`;
+      const url = `https://ma-net.jp/card-loan/refresh/${number[item]}?${parameter}`;
+      console.log(url);
+      optionsHtml += `<a href="${url}" class="user_form_btn ${item}"></a>`;
     });
     optionsHtml += `</div>`;
 
@@ -1312,10 +1405,10 @@ function removeOptionsHtml() {
 }
 
 function isPurpleAnswer() {
-  const a6 = $('input[name="q6"]')?.val();
-  const a7 = $('input[name="q7"]')?.val().slice(0, -2);
-  const a8 = $('input[name="q8"]')?.val();
-  const a10 = $('input[name="q10"]')?.val();
+  const a6 = $('input[name="q06"]')?.val();
+  const a7 = $('input[name="q10"]')?.val().slice(0, -2);
+  const a8 = $('input[name="q25"]')?.val();
+  const a10 = $('input[name="q11"]')?.val();
 
   let result =
     ["無職", "パート/アルバイト"].includes(a6) ||
