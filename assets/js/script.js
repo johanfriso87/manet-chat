@@ -1339,7 +1339,7 @@ function setNextHtml(data) {
     `;
   } else if (type == "last") {
     const options = isPurpleAnswer() ? data["options2"] : data["options1"];
-    optionsHtml += `<div class="chat_item chat_options user_form_wrapper">`;
+    optionsHtml += `<div class="card-list">`;
     const parameter = $("#parameter")[0].value;
     const number = {
       promise: 1,
@@ -1347,10 +1347,300 @@ function setNextHtml(data) {
       mobit: 7,
       aiful: 8,
     };
-    $.each(options, function (index, item) {
-      const url = `https://ma-net.jp/card-loan/refresh/${number[item]}?${parameter}`;
+    const getRedirectionHtml = (key, index) => {
+      const url = `https://ma-net.jp/card-loan/refresh/${number[key]}?${parameter}`;
       console.log(url);
-      optionsHtml += `<a href="${url}" class="user_form_btn ${item}"></a>`;
+      const orderSpan =
+        index === 1
+          ? `<span class="CardItemCrown CardItemCrown-gold">${index}</span>`
+          : index === 2
+          ? `<span class="CardItemCrown CardItemCrown-silver">${index}</span>`
+          : index === 3
+          ? `<span class="CardItemCrown CardItemCrown-bronze">${index}</span>`
+          : ``;
+      const prepared = {
+        promise: `
+          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="promise" data-location="default">
+            <header class="p-card_header">
+              <h3 class="p-card_header_title">
+                ${orderSpan}<a href="${url}">プロミス</a></h3>
+            </header>
+            <div class="p-card_content">
+              <p class="CardItem__pushPoint">
+                <span role="tooltip" class="CardItem__pushPoint__point">
+                  <svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
+                    <use xlink:href="#iconThumb"></use>
+                  </svg>Point
+                </span> プロミスは郵送物なし＆カードレスで絶対にバレたくない人におすすめ！ 
+              </p>
+              <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags">
+                <a href="${url}" class="p-card_infoImage">
+                  <img alt="プロミス" src="./assets/img/services/promise.gif">
+                </a>
+                <div class="CardItemToggleTag CardItemToggleTag--compact">
+                  <ul class="CardItemToggleTag__list">
+                    <li class="activate">来店不要</li>
+                    <li class="activate">Web申込可</li>
+                    <li class="activate">他社借入可</li>
+                    <li class="activate">収入書不要</li>
+                    <li class="activate">土日祝可</li>
+                    <li class="activate">バレない</li>
+                  </ul>
+                </div>
+              </div>
+              <dl class="CardItemTable u-mt-3 CardItemTable--simple" data-jest="cardItemTable">
+                <div class="CardItemTable_dl">
+                  <dt class="CardItemTable_dt">金利</dt>
+                  <dd class="CardItemTable_dd isDoubleCircle"><span>4.5%〜17.8%</span></dd>
+                </div>
+                <div class="CardItemTable_dl">
+                  <dt class="CardItemTable_dt">無利息期間</dt>
+                  <dd class="CardItemTable_dd isCircle"><span>30日</span></dd>
+                </div>
+                <div class="CardItemTable_dl">
+                  <dt class="CardItemTable_dt">借入限度額</dt>
+                  <dd class="CardItemTable_dd isCircle"><span>最大500万円</span></dd>
+                </div>
+                <div class="CardItemTable_dl">
+                  <dt class="CardItemTable_dt">融資時間</dt>
+                  <dd class="CardItemTable_dd isCircle"><span>最短25分</span></dd>
+                </div>
+                <div class="CardItemTable_dl">
+                  <dt class="CardItemTable_dt">審査時間</dt>
+                  <dd class="CardItemTable_dd isCircle"><span>最短25分</span></dd>
+                </div>
+                <div class="CardItemTable_dl">
+                  <dt class="CardItemTable_dt">コンビニ</dt>
+                  <dd class="CardItemTable_dd"><span class="CardItemTable_iconWrapper"><img src="./assets/img/sp/beginner/strongcard/convenience_store/icon_seven.png?adb3d6b30c4d51aef326346c5a4f6325" alt="セブンイレブン" class="CardItemTable_icon"><img src="./assets/img/sp/beginner/strongcard/convenience_store/icon_lawson.png?ca3864f4bfea5ed41baa70c8d54872fc" alt="ローソン" class="CardItemTable_icon"><img src="./assets/img/sp/beginner/strongcard/convenience_store/icon_family.png?cf9edcc48d240810c18ccb7ced7a756a" alt="ファミリーマート" class="CardItemTable_icon"><img src="./assets/img/sp/beginner/strongcard/convenience_store/icon_ministop.png?dfa6d47b7f50bdd9d67ca4a3416b367e" alt="ミニストップ" class="CardItemTable_icon"></span></dd>
+                </div>
+              </dl>
+              <div class="p-card_buttonWrap">
+                <a href="${url}" data-cy="cardToRefresh" class="p-card_button">
+                  <div class="p-card_buttonText">
+                    今すぐスマホで申し込み 
+                    <svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-card_buttonIcon p-svgicon">
+                      <use xlink:href="#iconCardArrowRight"></use>
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </article>
+        `,
+        acom: `
+          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="acom" data-location="default">
+            <header class="p-card_header">
+              <h3 class="p-card_header_title">${orderSpan}<a href="${url}">アコム</a></h3>
+            </header>
+            <div class="p-card_content">
+              <p class="CardItem__pushPoint"><span role="tooltip" class="CardItem__pushPoint__point"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
+                <use xlink:href="#iconThumb"></use>
+                </svg>Point</span> アコムなら24時間最短1分で振込！ </p>
+            <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags"><a href="${url}" class="p-card_infoImage"><img alt="アコム" src="./assets/img/services/acom.jpg"></a>
+                <div class="CardItemToggleTag CardItemToggleTag--compact">
+                    <ul class="CardItemToggleTag__list">
+                        <li class="activate">来店不要</li>
+                        <li class="activate">Web申込可</li>
+                        <li class="activate">他社借入可</li>
+                        <li class="activate">収入書不要</li>
+                        <li class="activate">土日祝可</li>
+                        <li class="activate">バレない</li>
+                    </ul>
+                </div>
+            </div>
+            <dl class="CardItemTable u-mt-3 CardItemTable--simple" data-jest="cardItemTable">
+                <div class="CardItemTable_dl">
+                    <dt class="CardItemTable_dt">金利</dt>
+                    <dd class="CardItemTable_dd isCircle"><span>3.0%〜18.0%</span></dd>
+                </div>
+                <div class="CardItemTable_dl">
+                    <dt class="CardItemTable_dt">無利息期間</dt>
+                    <dd class="CardItemTable_dd isCircle"><span>30日</span></dd>
+                </div>
+                <div class="CardItemTable_dl">
+                    <dt class="CardItemTable_dt">借入限度額</dt>
+                    <dd class="CardItemTable_dd isDoubleCircle"><span>最大800万円</span></dd>
+                </div>
+                <div class="CardItemTable_dl">
+                    <dt class="CardItemTable_dt">融資時間</dt>
+                    <dd class="CardItemTable_dd isCircle"><span>最短30分</span></dd>
+                </div>
+                <div class="CardItemTable_dl">
+                    <dt class="CardItemTable_dt">審査時間</dt>
+                    <dd class="CardItemTable_dd isCircle"><span>最短30分</span></dd>
+                </div>
+                <div class="CardItemTable_dl">
+                    <dt class="CardItemTable_dt">コンビニ</dt>
+                    <dd class="CardItemTable_dd"><span class="CardItemTable_iconWrapper"><img src="./assets/img/sp/beginner/strongcard/convenience_store/icon_seven.png?adb3d6b30c4d51aef326346c5a4f6325" alt="セブンイレブン" class="CardItemTable_icon"><img src="./assets/img/sp/beginner/strongcard/convenience_store/icon_lawson.png?ca3864f4bfea5ed41baa70c8d54872fc" alt="ローソン" class="CardItemTable_icon"><img src="./assets/img/sp/beginner/strongcard/convenience_store/icon_family.png?cf9edcc48d240810c18ccb7ced7a756a" alt="ファミリーマート" class="CardItemTable_icon"><img src="./assets/img/sp/beginner/strongcard/convenience_store/icon_ministop.png?dfa6d47b7f50bdd9d67ca4a3416b367e" alt="ミニストップ" class="CardItemTable_icon"></span></dd>
+                </div>
+            </dl>
+            <div class="p-card_buttonWrap">
+                <a href="${url}" data-cy="cardToRefresh" class="p-card_button">
+                    <div class="p-card_buttonText">
+                        今すぐスマホで申し込み <svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-card_buttonIcon p-svgicon">
+                            <use xlink:href="#iconCardArrowRight"></use>
+                        </svg></div>
+                </a>
+            </div>
+        </div>
+      </article>
+        `,
+        mobit: `
+          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="mobit" data-location="default">
+    <header class="p-card_header">
+        <h3 class="p-card_header_title">${orderSpan}
+            <a href="${url}">SMBCモビット</a></h3>
+    </header>
+    <div class="p-card_content">
+        <p class="CardItem__pushPoint"><span role="tooltip" class="CardItem__pushPoint__point"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
+                    <use xlink:href="#iconThumb"></use>
+                </svg>Point</span> モビットのWEB完結申込なら電話確認一切なしで、バレない！ </p>
+        <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags"><a href="${url}" class="p-card_infoImage"><img alt="SMBCモビット" src="./assets/img/services/mobit_300x250.png"></a>
+            <div class="CardItemToggleTag CardItemToggleTag--compact">
+                <ul class="CardItemToggleTag__list">
+                    <li class="activate">来店不要</li>
+                    <li class="activate">Web申込可</li>
+                    <li class="activate">他社借入可</li>
+                    <li aria-hidden="true" class="">収入書不要</li>
+                    <li aria-hidden="true" class="">土日祝可</li>
+                    <li class="activate">バレない</li>
+                </ul>
+            </div>
+        </div>
+        <div class="u-mt-3 u-mb-3">
+        </div>
+        <dl class="CardItemTable u-mt-3 CardItemTable--simple" data-jest="cardItemTable">
+            <div class="CardItemTable_dl">
+                <dt class="CardItemTable_dt">金利</dt>
+                <dd class="CardItemTable_dd isCircle"><span>3.0%〜18.0%</span></dd>
+            </div>
+            <div class="CardItemTable_dl">
+                <dt class="CardItemTable_dt">無利息期間</dt>
+                <dd class="CardItemTable_dd isTriangle"><span>なし</span></dd>
+            </div>
+            <div class="CardItemTable_dl">
+                <dt class="CardItemTable_dt">借入限度額</dt>
+                <dd class="CardItemTable_dd isDoubleCircle"><span>最大800万円</span></dd>
+            </div>
+            <div class="CardItemTable_dl">
+                <dt class="CardItemTable_dt">融資時間</dt>
+                <dd class="CardItemTable_dd isCircle"><span>最短即日</span></dd>
+            </div>
+            <div class="CardItemTable_dl">
+                <dt class="CardItemTable_dt">審査時間</dt>
+                <dd class="CardItemTable_dd"><span>10秒簡易審査</span></dd>
+            </div>
+            <div class="CardItemTable_dl">
+                <dt class="CardItemTable_dt">コンビニ</dt>
+                <dd class="CardItemTable_dd"><span class="CardItemTable_iconWrapper"><img src="./assets/img/sp/beginner/strongcard/convenience_store/icon_seven.png?adb3d6b30c4d51aef326346c5a4f6325" alt="セブンイレブン" class="CardItemTable_icon"><img src="./assets/img/sp/beginner/strongcard/convenience_store/icon_lawson.png?ca3864f4bfea5ed41baa70c8d54872fc" alt="ローソン" class="CardItemTable_icon"><img src="./assets/img/sp/beginner/strongcard/convenience_store/icon_family.png?cf9edcc48d240810c18ccb7ced7a756a" alt="ファミリーマート" class="CardItemTable_icon"><img src="./assets/img/sp/beginner/strongcard/convenience_store/icon_ministop.png?dfa6d47b7f50bdd9d67ca4a3416b367e" alt="ミニストップ" class="CardItemTable_icon"></span></dd>
+            </div>
+        </dl>
+        <div class="p-card_buttonWrap">
+            <a href="${url}" data-cy="cardToRefresh" class="p-card_button">
+                <div class="p-card_buttonText">
+                    今すぐスマホで申し込み <svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-card_buttonIcon p-svgicon">
+                        <use xlink:href="#iconCardArrowRight"></use>
+                    </svg></div>
+            </a>
+        </div>
+    </div>
+</article>
+        `,
+        aiful: `
+          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="aiful" data-location="default">
+      <header class="p-card_header">
+          <h3 class="p-card_header_title">
+              ${orderSpan}<a href="${url}">アイフル</a></h3>
+      </header>
+      <div class="p-card_content">
+          <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags"><a href="${url}" class="p-card_infoImage"><img alt="アイフル" src="./assets/img/services/aiful.jpg"></a>
+              <div class="CardItemToggleTag CardItemToggleTag--compact">
+                  <ul class="CardItemToggleTag__list">
+                      <li class="activate">来店不要</li>
+                      <li class="activate">Web申込可</li>
+                      <li class="activate">他社借入可</li>
+                      <li class="activate">収入書不要</li>
+                      <li class="activate">土日祝可</li>
+                      <li class="activate">バレない</li>
+                  </ul>
+              </div>
+          </div>
+          <p class="CardItem__pushPoint"><span role="tooltip" class="CardItem__pushPoint__point"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
+                      <use xlink:href="#iconThumb"></use>
+                  </svg>Point</span> 初めてのご契約で最大30日間利息0円！ </p>              
+          <div class="p-card_infoArticle_blocks">
+              <p data-block-type="article-point" class="p-card_infoArticle_block is-title has-icon"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon" data-icon="iconCircleBold">
+                      <use xlink:href="#iconCircleBold"></use>
+                  </svg> <span>職場・自宅への電話連絡が原則なし</span></p>
+              <ul class="p-card_infoArticle_block">
+                  <li>職場への電話連絡なし！</li>
+                  <li><span class="u-text-color-red">公式HP</span>にもその記載あり！</li>                 
+              </ul>
+              <p data-block-type="article-point" class="p-card_infoArticle_block is-title has-icon"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon" data-icon="iconCircleBold">
+                      <use xlink:href="#iconCircleBold"></use>
+                  </svg><span>web申し込みなら融資まで最短20分</span></p>
+              <ul class="p-card_infoArticle_block">
+                  <li><span class="u-text-color-red">土日祝365日</span>申し込みが可能！</li>
+                  <li>アイフル独自の<a href="${url}">1秒診断</a>ですぐに審査の結果が分かる！</li>
+              </ul>
+              <p data-block-type="article-point" class="p-card_infoArticle_block is-title has-icon"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon" data-icon="iconCloseBold">
+                      <use xlink:href="#iconCloseBold"></use>
+                  </svg><span>収入のない方はNG</span></p>
+              <ul class="p-card_infoArticle_block">
+                  <li><span class="u-text-color-red">安定した収入があること</span>が申込条件としてあります。</li>
+                  <li>毎月一定額の<span class="u-text-color-red">給料・収入</span>がなければ審査に通りません。</li>
+              </ul>
+              <p data-block-type="article-point" class="p-card_infoArticle_block is-title has-icon"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon" data-icon="iconCloseBold">
+                      <use xlink:href="#iconCloseBold"></use>
+                  </svg><span>過去に滞納経験がある方は要注意</span></p>
+              <ul class="p-card_infoArticle_block">
+                  <li>過去に複数回の<span class="u-text-color-red">滞納経験</span>がある方は審査に注意！</li>
+                  <li><span class="u-text-color-red">スマホ・クレカ</span>の延滞は、特に審査への影響があります。</li>
+              </ul>
+          </div>
+          
+      <dl class="CardItemTable u-mt-3 CardItemTable--simple" data-jest="cardItemTable">
+          <div class="CardItemTable_dl">
+              <dt class="CardItemTable_dt">金利</dt>
+              <dd class="CardItemTable_dd isDoubleCircle"><span>3.0%〜18.0%</span></dd>
+          </div>
+          <div class="CardItemTable_dl">
+              <dt class="CardItemTable_dt">無利息期間</dt>
+              <dd class="CardItemTable_dd isCircle"><span>最大30日</span></dd>
+          </div>
+          <div class="CardItemTable_dl">
+              <dt class="CardItemTable_dt">借入限度額</dt>
+              <dd class="CardItemTable_dd isDoubleCircle"><span>最大800万円</span></dd>
+          </div>
+          <div class="CardItemTable_dl">
+              <dt class="CardItemTable_dt">融資時間</dt>
+              <dd class="CardItemTable_dd isCircle"><span>最短20分</span></dd>
+          </div>
+          <div class="CardItemTable_dl">
+              <dt class="CardItemTable_dt">審査時間</dt>
+              <dd class="CardItemTable_dd isCircle"><span>最短20分</span></dd>
+          </div>
+          <div class="CardItemTable_dl">
+              <dt class="CardItemTable_dt">コンビニ</dt>
+              <dd class="CardItemTable_dd"><span class="CardItemTable_iconWrapper"><img src="./assets/img/sp/beginner/strongcard/convenience_store/icon_seven.png?adb3d6b30c4d51aef326346c5a4f6325" alt="セブンイレブン" class="CardItemTable_icon"><img src="./assets/img/sp/beginner/strongcard/convenience_store/icon_lawson.png?ca3864f4bfea5ed41baa70c8d54872fc" alt="ローソン" class="CardItemTable_icon"><img src="./assets/img/sp/beginner/strongcard/convenience_store/icon_enet.png" alt="e-net" class="CardItemTable_icon"></span></dd>
+          </div>
+      </dl>
+      <div class="p-card_buttonWrap">
+          <a href="${url}" data-cy="cardToRefresh" class="p-card_button">
+              <div class="p-card_buttonText">
+                  今すぐスマホで申し込み <svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-card_buttonIcon p-svgicon">
+                      <use xlink:href="#iconCardArrowRight"></use>
+                  </svg></div>
+          </a>
+      </div>
+      </div>
+  </article>
+        `,
+      };
+      return prepared[key];
+    };
+    $.each(options, function (index, item) {
+      optionsHtml += getRedirectionHtml(item, index + 1);
     });
     optionsHtml += `</div>`;
 
