@@ -780,6 +780,8 @@ function setAnswerHtml(id, selected) {
         replyText = selected;
       } else if (selected.match(".*いる$")) {
         replyText = selected.replace("いる", "います");
+      } else if (id == "q23") {
+        replyText = selected;
       } else {
         replyText = selected + "です";
       }
@@ -1310,7 +1312,11 @@ function setNextHtml(data) {
 
     optionsHtml += `
       <div class="chat_next_btn_wrap">
-        <button type="button" id="chat-next-btn-${data["id"]}" data-itemid="${data["id"]}" class="chat__form-btn" data-selected="" data-next="${data["nextId"]}">次に進む</button>
+        <button type="button" id="chat-next-btn-${data["id"]}" data-itemid="${
+      data["id"]
+    }" class="chat__form-btn" data-selected="0万円"  data-answer="${
+      data["id"] == "q01" ? "a01" : "a45"
+    }" data-next="${data["nextId"]}">次に進む</button>
       </div>
     `;
     optionsHtml += "</div>";

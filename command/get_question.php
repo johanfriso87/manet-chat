@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     'id' => $nextId,
                     'nextId' => 'q21',
                     'questions' => array(
-                        '収入証明書は手元にありますか',
+                        '収入証明書は手元にありますか？',
                     ),
                     'options' => array(
                         'はい' => 'a105',
@@ -140,9 +140,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             case "last":
                 $data = array(
                     'questions' => array(
-                        'ありがとうございます。診断の結果、あなたは[AMOUNT]万円まで借りられます',
+                        'ありがとうございます。診断の結果、あなたは<span class="accent">[AMOUNT]万円</span>まで借りられます',
                         'ご回答頂いた情報からあなたにおすすめのカードローンをご紹介いたします！',
-                        '今すぐ確認してみる',
                     ),
                     'options1' => array(
                         // 'プロミス',
