@@ -48,8 +48,6 @@
   }
 }
 
-
-
 .first-modal {
   transition: all 0.3s;
 
@@ -58,12 +56,12 @@
     opacity: 0;
     z-index: -1;
   }
-  
+
   &__container {
     max-width: 840px;
     width: 100%;
     transform: translateY(-40px);
-    
+
     @media ($sp) {
       transform: translateY(0);
     }
@@ -83,11 +81,11 @@
     background: white;
     padding: 40px;
     border-radius: 0 0 10px 10px;
-    
+
     @media ($sp) {
       width: 100%;
       height: 60%;
-      padding: 20px;
+      padding: 20px 20px 40px 20px;
       margin: 0 auto;
     }
 
@@ -101,7 +99,7 @@
         font-size: 24px;
         text-align: center;
         font-weight: 800;
-        
+
         @media ($sp) {
           width: 65%;
           font-size: 13px;
@@ -118,7 +116,7 @@
         background-repeat: no-repeat;
         background-image: url($chat_img);
         background-size: auto 100%;
-        
+
         @media ($sp) {
           width: 65px;
           height: 65px;
@@ -126,15 +124,24 @@
         }
       }
     }
+
+    &::after {
+      content: "※お申し込みの時間によってはご希望に添えない場合がございます";
+      position: absolute;
+      right: 2em;
+      margin-top: 0.5em;
+      @media ($sp) {
+        font-size: 0.7em;
+        margin-top: 1em;
+      }
+    }
   }
-
-
 
   &-text {
     font-size: 24px;
     text-align: center;
     font-weight: 800;
-    
+
     @media ($sp) {
       width: 50%;
       font-size: 18px;
@@ -158,13 +165,13 @@
       @include hand;
       top: 20px;
       right: -32px;
-    
+
       @media ($pc) {
         top: 38px;
         right: -24px;
       }
     }
-    
+
     @media ($sp) {
       width: 90%;
     }
@@ -187,7 +194,7 @@
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       border-radius: 10px;
       border-bottom: 3px solid #707070;
-      
+
       @media ($sp) {
         font-size: 18px;
         height: 70px;
@@ -205,13 +212,12 @@
           font-size: 14px;
         }
       }
-    
+
       img {
         height: 52px;
         width: auto;
         margin-right: 8px;
       }
-      
     }
   }
 
@@ -236,7 +242,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     @media ($sp) {
       padding-top: 0;
     }
@@ -294,13 +300,12 @@
     transform: rotate(360deg);
   }
 }
-      
+
 // 赤文字
 .accent {
   color: #dc3462;
   font-weight: bold;
 }
-
 
 // ------------------------------
 // 離脱防止
@@ -441,7 +446,7 @@
     justify-content: center;
     align-items: center;
     max-width: 660px;
-  
+
     img {
       border-radius: 10px;
     }
@@ -482,7 +487,7 @@
       display: flex;
       flex-wrap: wrap;
       margin: 0 auto;
-      letter-spacing: -.4em;
+      letter-spacing: -0.4em;
     }
 
     li {
@@ -500,7 +505,7 @@
       padding: 10px;
       width: 100%;
       height: 66px;
-      border: 1px solid #BBB;
+      border: 1px solid #bbb;
       border-radius: 4px;
       box-sizing: border-box;
       // background-image: linear-gradient(-90deg,#fff 0,#eee 100%);
@@ -516,13 +521,13 @@
       }
 
       &.selected {
-        border: 1px solid #5EAA00!important;
-        box-shadow: none!important;
-        color: #FFF!important;
-        background-color: #5EAA00!important;
-        background-image: url(/assets/htdocs/images/step/icon_check_white.png)!important;
-        background-repeat: no-repeat!important;
-        background-position: 10px center!important;
+        border: 1px solid #5eaa00 !important;
+        box-shadow: none !important;
+        color: #fff !important;
+        background-color: #5eaa00 !important;
+        background-image: url(/assets/htdocs/images/step/icon_check_white.png) !important;
+        background-repeat: no-repeat !important;
+        background-position: 10px center !important;
       }
     }
   }
@@ -554,7 +559,7 @@
   &__btn {
     position: relative;
     overflow: hidden;
-    background-color: #5EAA00;
+    background-color: #5eaa00;
     border-radius: 50px;
     font-size: 20px;
     text-align: center;
@@ -562,12 +567,12 @@
     margin: 20px auto 0;
     transition: all 0.3s;
     color: white;
-    
+
     @media ($sp) {
       font-size: 16px;
       padding: 14px 50px;
     }
-  
+
     &:hover::after {
       content: "";
       position: absolute;
@@ -576,12 +581,17 @@
       width: 40px;
       height: 100%;
       transform: scale(2) rotate(20deg);
-      background-image: linear-gradient(100deg, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 0.5) 100%, rgba(255, 255, 255, 0) 0%);
+      background-image: linear-gradient(
+        100deg,
+        rgba(255, 255, 255, 0) 10%,
+        rgba(255, 255, 255, 0.5) 100%,
+        rgba(255, 255, 255, 0) 0%
+      );
       animation-name: shiny;
       animation-duration: 3s;
       animation-timing-function: ease-in-out;
       animation-iteration-count: infinite;
-    }  
+    }
   }
 }
 
@@ -619,9 +629,9 @@
 .q-select {
   margin: 10px auto;
   padding: 10px 20px;
-  background: rgba(255,140,0,0.7);
+  background: rgba(255, 140, 0, 0.7);
   width: 90%;
-    
+
   @media ($pc) {
     margin-left: 120px;
   }
@@ -633,12 +643,12 @@
     &-title {
       font-size: 14px;
     }
-  
+
     &-form {
-      border: 1px solid #AAA;
+      border: 1px solid #aaa;
       min-height: 38px;
       box-sizing: border-box;
-  
+
       button {
         display: block;
         width: 100%;
@@ -657,7 +667,7 @@
 .next {
   border: 10px solid red;
   animation: blinkAnimation 1s ease infinite alternate;
-  
+
   @keyframes blinkAnimation {
     0% {
       border: 10px solid red;
