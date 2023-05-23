@@ -319,34 +319,39 @@ $(function () {
     $("#caution")[0].hidden = false;
   });
 
-  $(document).on("input", "input[type='range']", function () {
-    const itemId = $(this).parents(".option_list").data("itemid");
-    const value = $(this).val();
-    $(`#scoped-rangeValue-${itemId}`).text(value + "万円");
-    $(`#chat-next-btn-${itemId}`)[0].setAttribute(
-      "data-selected",
-      value + "万円"
-    );
-    const answer =
-      itemId == "q01"
-        ? value <= 10
-          ? "a01"
-          : value <= 50
-          ? "a02"
-          : value <= 100
-          ? "a03"
-          : "a04"
-        : value <= 120
-        ? "a45"
-        : value <= 300
-        ? "a46"
-        : value <= 500
-        ? "a47"
-        : value <= 700
-        ? "a48"
-        : "a49";
-    $(`#chat-next-btn-${itemId}`)[0].setAttribute("data-answer", answer);
-  });
+  $(document).on(
+    "input",
+    "input[type='range']",
+    debounce(function (event) {
+      console.log("range is clicked");
+      const itemId = event.target.id.split("-")[1];
+      const value = event.target.value;
+      $(`#scoped-rangeValue-${itemId}`).text(value + "万円");
+      $(`#chat-next-btn-${itemId}`)[0].setAttribute(
+        "data-selected",
+        value + "万円"
+      );
+      const answer =
+        itemId == "q01"
+          ? value <= 10
+            ? "a01"
+            : value <= 50
+            ? "a02"
+            : value <= 100
+            ? "a03"
+            : "a04"
+          : value <= 120
+          ? "a45"
+          : value <= 300
+          ? "a46"
+          : value <= 500
+          ? "a47"
+          : value <= 700
+          ? "a48"
+          : "a49";
+      $(`#chat-next-btn-${itemId}`)[0].setAttribute("data-answer", answer);
+    })
+  );
 
   $(document).on("click", ".range-minus", function () {
     const itemId = $(this).parents(".option_list").data("itemid");
@@ -1724,4 +1729,14 @@ function isPurpleAnswer() {
 
   console.log("IS PURPLE:", result);
   return result;
+}
+
+function debounce(func, timeout = 500) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
 }
