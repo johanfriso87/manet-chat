@@ -264,7 +264,7 @@
       text-align: right;
       margin: 12px;
     }
-    
+
     .scoped-rangeBox {
       width: 100%;
       display: flex;
@@ -309,11 +309,11 @@
       width: 70%;
       margin-left: auto;
       margin-right: auto;
-  
+
       @media ($sp) {
         width: 100%;
       }
-  
+
       li {
         width: 48%;
       }
@@ -328,6 +328,8 @@
 
       li {
         width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
         justify-content: flex-start;
         border-radius: 0;
         margin-top: 0;
@@ -378,28 +380,31 @@
         }
       }
     }
-    
+
     .chat_next_btn_wrap {
       text-align: center;
-      
+
       button {
         font-weight: 800;
         font-size: 16px;
         padding: 14px 30px;
-        background: rgba(0,0,0,0) linear-gradient(180deg, $h-blue 0%, $d-blue 100%) 0% 0% no-repeat padding-box;
-        box-shadow: 0 3px 6px rgba(0,0,0,.16);
+        background: rgba(0, 0, 0, 0)
+          linear-gradient(180deg, $h-blue 0%, $d-blue 100%) 0% 0% no-repeat
+          padding-box;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
         position: relative;
         border-radius: 50px;
         color: #fff;
         text-align: center;
-        transition: all .3s;
+        transition: all 0.3s;
         animation: bounce 3s ease-in-out infinite;
 
         &:disabled {
           background: #c6c6c6;
           cursor: not-allowed;
           animation: none;
-          &::before, &::after {
+          &::before,
+          &::after {
             display: none;
           }
         }
@@ -412,7 +417,7 @@
           background-image: url(../img/finger.png);
           background-size: 40px 40px;
           background-position: 50% 50%;
-          animation: hand .5s infinite;
+          animation: hand 0.5s infinite;
           top: 6px;
           right: -38px;
         }
@@ -425,7 +430,12 @@
           width: 40px;
           height: 100%;
           transform: scale(2) rotate(20deg);
-          background-image: linear-gradient(100deg, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 0.5) 100%, rgba(255, 255, 255, 0) 0%);
+          background-image: linear-gradient(
+            100deg,
+            rgba(255, 255, 255, 0) 10%,
+            rgba(255, 255, 255, 0.5) 100%,
+            rgba(255, 255, 255, 0) 0%
+          );
           animation-name: shiny;
           animation-duration: 3s;
           animation-timing-function: ease-in-out;
@@ -464,7 +474,7 @@
         margin-top: 0;
       }
     }
-    
+
     .chat_next_btn_wrap {
       text-align: center;
 
@@ -472,24 +482,27 @@
         font-weight: 800;
         font-size: 16px;
         padding: 14px 30px;
-        background: rgba(0,0,0,0) linear-gradient(180deg, $h-blue 0%, $d-blue 100%) 0% 0% no-repeat padding-box;
-        box-shadow: 0 3px 6px rgba(0,0,0,.16);
+        background: rgba(0, 0, 0, 0)
+          linear-gradient(180deg, $h-blue 0%, $d-blue 100%) 0% 0% no-repeat
+          padding-box;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
         position: relative;
         border-radius: 50px;
         color: #fff;
         text-align: center;
-        transition: all .3s;
+        transition: all 0.3s;
         animation: bounce 3s ease-in-out infinite;
-        
+
         &:disabled {
           background: #c6c6c6;
           cursor: not-allowed;
           animation: none;
-          &::before, &::after {
+          &::before,
+          &::after {
             display: none;
           }
         }
-        
+
         &::before {
           position: absolute;
           content: "";
@@ -498,7 +511,7 @@
           background-image: url(../img/finger.png);
           background-size: 40px 40px;
           background-position: 50% 50%;
-          animation: hand .5s infinite;
+          animation: hand 0.5s infinite;
           top: 6px;
           right: -38px;
         }
@@ -511,7 +524,12 @@
           width: 40px;
           height: 100%;
           transform: scale(2) rotate(20deg);
-          background-image: linear-gradient(100deg, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 0.5) 100%, rgba(255, 255, 255, 0) 0%);
+          background-image: linear-gradient(
+            100deg,
+            rgba(255, 255, 255, 0) 10%,
+            rgba(255, 255, 255, 0.5) 100%,
+            rgba(255, 255, 255, 0) 0%
+          );
           animation-name: shiny;
           animation-duration: 3s;
           animation-timing-function: ease-in-out;
@@ -550,7 +568,7 @@
         padding: 0;
         border-radius: 0;
         margin-top: 0;
-        
+
         @media ($sp) {
           width: 100%;
         }
@@ -564,7 +582,7 @@
           -webkit-flex-grow: 1;
           -ms-flex-positive: 1;
           flex-grow: 1;
-          
+
           @media ($sp) {
             width: 100%;
           }
@@ -575,27 +593,30 @@
         }
       }
     }
-    
+
     .chat_next_btn_wrap {
       text-align: center;
 
       button {
         font-weight: 800;
-        background: rgba(0,0,0,0) linear-gradient(180deg, $h-blue 0%, $d-blue 100%) 0% 0% no-repeat padding-box;
-        box-shadow: 0 3px 6px rgba(0,0,0,.16);
+        background: rgba(0, 0, 0, 0)
+          linear-gradient(180deg, $h-blue 0%, $d-blue 100%) 0% 0% no-repeat
+          padding-box;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
         position: relative;
         border-radius: 50px;
         color: #fff;
         text-align: center;
         padding: 14px 30px;
-        transition: all .3s;
+        transition: all 0.3s;
         animation: bounce 3s ease-in-out infinite;
-        
+
         &:disabled {
           background: #c6c6c6;
           cursor: not-allowed;
           animation: none;
-          &::before, &::after {
+          &::before,
+          &::after {
             display: none;
           }
         }
@@ -608,7 +629,7 @@
           background-image: url(../img/finger.png);
           background-size: 40px 40px;
           background-position: 50% 50%;
-          animation: hand .5s infinite;
+          animation: hand 0.5s infinite;
           top: 6px;
           right: -38px;
         }
@@ -621,7 +642,12 @@
           width: 40px;
           height: 100%;
           transform: scale(2) rotate(20deg);
-          background-image: linear-gradient(100deg, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 0.5) 100%, rgba(255, 255, 255, 0) 0%);
+          background-image: linear-gradient(
+            100deg,
+            rgba(255, 255, 255, 0) 10%,
+            rgba(255, 255, 255, 0.5) 100%,
+            rgba(255, 255, 255, 0) 0%
+          );
           animation-name: shiny;
           animation-duration: 3s;
           animation-timing-function: ease-in-out;
@@ -674,7 +700,8 @@
       font-weight: 700;
       color: $white;
       border-radius: 10px;
-      background: transparent linear-gradient(180deg, #ffb100 0%, #e58613 100%) 0% 0% no-repeat padding-box;
+      background: transparent linear-gradient(180deg, #ffb100 0%, #e58613 100%)
+        0% 0% no-repeat padding-box;
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 
       img {
@@ -789,7 +816,7 @@
   }
 
   //日本地図ボタン
-  &--japan_map{
+  &--japan_map {
     margin: -20px auto 50px auto;
     width: 100%;
     max-width: 600px;
@@ -803,7 +830,7 @@
       margin-right: auto;
       padding: 10px;
       position: relative;
-  
+
       li {
         display: flex;
         text-align: center;
@@ -813,15 +840,13 @@
         border: 2px #333 solid;
         border-radius: 7px;
         transition: 0.2s;
-        box-shadow: 0px 3px 6px rgba(0,0,0,0.5);
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
 
         &:hover {
           cursor: pointer;
           box-shadow: none;
         }
-        
-        
-  
+
         span {
           display: block;
           color: $black;
@@ -832,42 +857,39 @@
           border-radius: 5px;
           margin: 3px;
           padding: 5px;
-  
+
           @media ($sp) {
             font-size: $small;
-          }      
+          }
         }
       }
-
     }
 
-
-    #北海道・東北_map{
+    #北海道・東北_map {
       width: 20%;
       height: 45%;
       top: 0%;
       left: 80%;
       background-color: #3355dd;
     }
-    
-    #関東_map{
+
+    #関東_map {
       width: 20%;
       height: 35%;
       top: 45%;
       left: 80%;
       background-color: #eedd55;
-
     }
-    
-    #北陸・甲信越_map{
+
+    #北陸・甲信越_map {
       width: 20%;
       height: 25%;
       top: 35%;
       left: 60%;
       background-color: #33dd66;
     }
-    
-    #東海_map{
+
+    #東海_map {
       width: 20%;
       height: 25%;
       top: 60%;
@@ -875,7 +897,7 @@
       background-color: #ee6600;
     }
 
-    #関西_map{
+    #関西_map {
       width: 15%;
       height: 40%;
       top: 45%;
@@ -883,7 +905,7 @@
       background-color: #dd4444;
     }
 
-    #中国_map{
+    #中国_map {
       width: 24%;
       height: 19%;
       top: 45%;
@@ -891,7 +913,7 @@
       background-color: #dd4477;
     }
 
-    #四国_map{
+    #四国_map {
       width: 22%;
       height: 19%;
       top: 66%;
@@ -899,7 +921,7 @@
       background-color: #dd44bb;
     }
 
-    #九州・沖縄_map{
+    #九州・沖縄_map {
       width: 19%;
       height: 55%;
       top: 45%;
@@ -908,13 +930,6 @@
     }
   }
 }
-
-
-
-
-
-
-
 
 //都道府県リスト
 .address_list {
@@ -1025,7 +1040,8 @@
 
   &:active {
     box-shadow: none;
-    background: transparent linear-gradient(180deg, $d-blue 0%, $h-blue 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(180deg, $d-blue 0%, $h-blue 100%) 0%
+      0% no-repeat padding-box;
   }
 
   position: relative;
@@ -1033,7 +1049,7 @@
   //   @include hand;
   //   top: 17px;
   //   right: -12px;
-  
+
   //   @media ($pc) {
   //     top: 12px;
   //     right: -11px;
@@ -1168,7 +1184,6 @@
           text-decoration: underline;
         }
       }
-      
     }
 
     .p-card_content {
@@ -1238,8 +1253,8 @@
         grid-gap: 0.6rem;
         display: grid;
         grid-template-areas:
-            "cardInfoImage cardInfoTable"
-            "cardInfoReview cardInfoTable";
+          "cardInfoImage cardInfoTable"
+          "cardInfoReview cardInfoTable";
 
         .p-card_infoImage {
           grid-area: cardInfoImage;
@@ -1295,7 +1310,7 @@
           }
           .CardItemTable_dd {
             font-weight: 400;
-            
+
             position: relative;
             margin: 0 5px;
             height: 50px;
@@ -1341,7 +1356,8 @@
           }
         }
       }
-      .u-mt-3, .u-my-3 {
+      .u-mt-3,
+      .u-my-3 {
         margin-top: 1rem !important;
       }
 
@@ -1349,7 +1365,10 @@
         margin-top: 1rem;
         margin-bottom: 0.6rem;
 
-        .p-card_button:link, .p-card_button:active, .p-card_button:hover, .p-card_button:visited {
+        .p-card_button:link,
+        .p-card_button:active,
+        .p-card_button:hover,
+        .p-card_button:visited {
           color: #fff;
           text-decoration: none;
         }
