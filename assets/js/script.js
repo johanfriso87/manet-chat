@@ -350,14 +350,14 @@ $(function () {
 
   $(document).on("click", ".range-minus", function () {
     const itemId = $(this).parents(".option_list").data("itemid");
-    const range = $("input[type=range]");
+    const range = $(`#range-${itemId}`);
     const current = Number(range.val());
     const step = Number(range.attr("step"));
     range.val(Math.max(0, current - step));
     $(`#scoped-rangeValue-${itemId}`).text(range.val() + "万円");
     $(`#chat-next-btn-${itemId}`)[0].setAttribute(
       "data-selected",
-      $(this).val() + "万円"
+      range.val() + "万円"
     );
     const value = range.val();
     const answer =
@@ -383,14 +383,14 @@ $(function () {
 
   $(document).on("click", ".range-plus", function () {
     const itemId = $(this).parents(".option_list").data("itemid");
-    const range = $("input[type=range]");
+    const range = $(`#range-${itemId}`);
     const current = Number(range.val());
     const step = Number(range.attr("step"));
     range.val(Math.min(current + step, Number(range.attr("max"))));
     $(`#scoped-rangeValue-${itemId}`).text(range.val() + "万円");
     $(`#chat-next-btn-${itemId}`)[0].setAttribute(
       "data-selected",
-      $(this).val() + "万円"
+      range.val() + "万円"
     );
     const value = range.val();
     const answer =
@@ -506,6 +506,10 @@ $(function () {
       if (index >= answerIndex) {
         $(element).remove();
       }
+    });
+
+    $("#chats .p-card").each(function (index, element) {
+      $(element).remove();
     });
 
     //選択肢をもとに戻す
@@ -1693,11 +1697,17 @@ function scrollToBottom() {
   var element = document.documentElement;
   var bottom = element.scrollHeight - element.clientHeight;
   // window.scroll(0, bottom);
-  $("html, body").animate({ scrollTop: bottom }, 200, "swing");
+  let addition = 0;
+  if ($("#chats .p-card").length > 0) {
+    addition = Number($("#chats .p-card").css("height").slice(0, -2));
+    console.log(addition);
+  }
+  $("html, body").animate({ scrollTop: bottom - addition * 4 }, 200, "swing");
 }
 
 function removeOptionsHtml() {
   $("#chats .chat_options").hide();
+  $("#chats .p-card").hide();
 }
 
 function isPurpleAnswer() {
