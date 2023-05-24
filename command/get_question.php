@@ -143,12 +143,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                         'ありがとうございます。診断の結果、あなたは<span class="accent">[AMOUNT]万円</span>まで借りられます',
                         'ご回答頂いた情報からあなたにおすすめのカードローンをご紹介いたします！',
                     ),
+                    // LINE
                     'options1' => array(
                         'promise',
                         'acom',
                         'mobit',
                         'aiful',
                     ),
+                    // Tiktok
+                    // 'options1' => array(
+                    //     'acom',
+                    //     'promise',
+                    //     'mobit',
+                    //     'aiful',
+                    // ),
+                    // Facebook
+                    // 'options1' => array(
+                    //     'promise',
+                    //     'acom',
+                    //     'mobit',
+                    //     'aiful',
+                    // ),
+                    // Youtube short
+                    // 'options1' => array(
+                    //     'promise',
+                    //     'acom',
+                    //     'mobit',
+                    //     'aiful',
+                    // ),
                     'options2' => array(
                         'mobit',
                         'promise',

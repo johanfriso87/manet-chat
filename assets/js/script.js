@@ -333,14 +333,12 @@ $(function () {
       const itemId = event.target.id.split("-")[1];
       const value = event.target.value;
 
-      // Cached DOM elements
-      const rangeValueElement = $(`#scoped-rangeValue-${itemId}`);
-      const nextBtnElement = $(`#chat-next-btn-${itemId}`);
+      $(`#scoped-rangeValue-${itemId}`).text(value + "万円");
+      $(`#chat-next-btn-${itemId}`)[0].setAttribute(
+        "data-selected",
+        value + "万円"
+      );
 
-      rangeValueElement.text(value + "万円");
-      nextBtnElement[0].setAttribute("data-selected", value + "万円");
-
-      // Rest of your code...
       const answer =
         itemId == "q01"
           ? value <= 10
@@ -359,7 +357,7 @@ $(function () {
           : value <= 700
           ? "a48"
           : "a49";
-      nextBtnElement[0].setAttribute("data-answer", answer);
+      $(`#chat-next-btn-${itemId}`)[0].setAttribute("data-answer", answer);
     })
   );
 
