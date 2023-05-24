@@ -323,7 +323,6 @@ $(function () {
     "input",
     "input[type='range']",
     debounce(function (event) {
-      console.log("range is clicked");
       const itemId = event.target.id.split("-")[1];
       const value = event.target.value;
       $(`#scoped-rangeValue-${itemId}`).text(value + "万円");
