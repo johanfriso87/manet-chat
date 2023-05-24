@@ -319,17 +319,28 @@ $(function () {
     $("#caution")[0].hidden = false;
   });
 
+  // Check if the device is running on iOS
+  const isiOS =
+    /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  // Event listener for input or touch events
+  const inputEvent = isiOS ? "touchstart" : "input";
+
   $(document).on(
-    "input",
+    inputEvent,
     "input[type='range']",
     debounce(function (event) {
       const itemId = event.target.id.split("-")[1];
       const value = event.target.value;
-      $(`#scoped-rangeValue-${itemId}`).text(value + "万円");
-      $(`#chat-next-btn-${itemId}`)[0].setAttribute(
-        "data-selected",
-        value + "万円"
-      );
+
+      // Cached DOM elements
+      const rangeValueElement = $(`#scoped-rangeValue-${itemId}`);
+      const nextBtnElement = $(`#chat-next-btn-${itemId}`);
+
+      rangeValueElement.text(value + "万円");
+      nextBtnElement[0].setAttribute("data-selected", value + "万円");
+
+      // Rest of your code...
       const answer =
         itemId == "q01"
           ? value <= 10
@@ -348,7 +359,7 @@ $(function () {
           : value <= 700
           ? "a48"
           : "a49";
-      $(`#chat-next-btn-${itemId}`)[0].setAttribute("data-answer", answer);
+      nextBtnElement[0].setAttribute("data-answer", answer);
     })
   );
 
@@ -1688,6 +1699,9 @@ function setNextHtml(data) {
         placeholderValue: "",
         searchPlaceholderValue: "",
       });
+    else if (type == "scrollbar") {
+      new RangeTouch(`#range-${data["id"]}`);
+    }
 
     //最後に「訂正する」を戻す
     $(".modify").removeClass("modify--inactive");
