@@ -6,7 +6,8 @@ function getAjaxPath() {
   if (location.host == "localhost") {
     var ajaxPath = "command";
   } else {
-    var ajaxPath = location.protocol + "//" + location.host + "/command";
+    var ajaxPath =
+      location.protocol + "//" + location.host + location.pathname + "command";
   }
   // var ajaxPath = "https://gaihekitosou-support.jp/lp-55/command";
 
