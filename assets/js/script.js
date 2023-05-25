@@ -1275,7 +1275,7 @@ function setNextHtml(data) {
       });
     else
       $.each(data["options"], function (item, answerId) {
-        const nextId = answerId == "a93" ? "q93" : "last";
+        const nextId = answerId == "a93" ? "q11" : "last";
         optionsHtml += `<li class="option" data-selected="${item}" data-answer="${answerId}" data-reply="${data["replies"]}" data-next="${nextId}"><span>${item}</span></li>`;
       });
     optionsHtml += "</ul>";
