@@ -42,6 +42,7 @@
 
 .modal_first_wrapper {
   height: 100%;
+  overflow: auto;
 
   @media ($sp) {
     height: calc(100% - 36px);
