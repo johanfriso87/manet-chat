@@ -9,7 +9,6 @@ function getAjaxPath() {
     var ajaxPath =
       location.protocol + "//" + location.host + location.pathname + "command";
   }
-  // var ajaxPath = "https://gaihekitosou-support.jp/lp-55/command";
 
   return ajaxPath;
 }
@@ -783,54 +782,27 @@ $(function () {
  * @param string selected
  */
 function setAnswerHtml(id, selected) {
-  //ajax de json toru
-  let url = getAjaxPath() + "/get_question.php";
-  $.ajax(url, {
-    type: "GET",
-    data: { id: id },
-    dataType: "json",
-  })
-    .done(function (data) {
-      let replyText;
-      if (selected == "わからない") {
-        replyText = "わかりません";
-      } else if (selected == "はい" || selected == "いいえ") {
-        replyText = selected;
-      } else if (selected.match(".*いる$")) {
-        replyText = selected.replace("いる", "います");
-      } else if (id == "q23") {
-        replyText = selected;
-      } else {
-        replyText = selected + "です";
-      }
-      let chatHtml = "";
-      chatHtml += '<div class="chat_item chat_user" data-itemid="' + id + '">';
-      chatHtml += '<div class="chat_user_text">' + replyText + "</div>";
-      chatHtml += '<div class="chat_user_correction">';
-      chatHtml += '<span class="modify modify--inactive">訂正する</span>';
-      chatHtml += "</div>";
-      chatHtml += "</div>";
-      $("#chats").append(chatHtml);
-      scrollToBottom();
-    })
-    .fail(function (error) {
-      console.log(error);
-    });
-
-  // let replyText = selected;
-  // // if (data["type"] == "address") {
-  // //   replyText = selected + "です";
-  // // } else {
-  // //   replyText = data["replies"][selected] ? data["replies"][selected] : selected;
-  // // }
-  // let chatHtml = "";
-  // chatHtml += '<div class="chat_item chat_user" data-itemid="' + id + '">';
-  // chatHtml += '<div class="chat_user_text">' + replyText + "</div>";
-  // chatHtml += '<div class="chat_user_correction">';
-  // chatHtml += '<span class="modify">訂正する</span>';
-  // chatHtml += "</div>";
-  // chatHtml += "</div>";
-  // $("#chats").append(chatHtml);
+  let replyText;
+  if (selected == "わからない") {
+    replyText = "わかりません";
+  } else if (selected == "はい" || selected == "いいえ") {
+    replyText = selected;
+  } else if (selected.match(".*いる$")) {
+    replyText = selected.replace("いる", "います");
+  } else if (id == "q23") {
+    replyText = selected;
+  } else {
+    replyText = selected + "です";
+  }
+  let chatHtml = "";
+  chatHtml += '<div class="chat_item chat_user" data-itemid="' + id + '">';
+  chatHtml += '<div class="chat_user_text">' + replyText + "</div>";
+  chatHtml += '<div class="chat_user_correction">';
+  chatHtml += '<span class="modify modify--inactive">訂正する</span>';
+  chatHtml += "</div>";
+  chatHtml += "</div>";
+  $("#chats").append(chatHtml);
+  scrollToBottom();
 }
 
 // モーダル出す
@@ -852,19 +824,22 @@ function Qmodal(cnt, id) {
  * @param int nextId
  */
 function getNext(nextId) {
-  let url = getAjaxPath() + "/get_question.php";
+  // let url = getAjaxPath() + "/get_question.php";
 
-  $.ajax(url, {
-    type: "GET",
-    data: { id: nextId },
-    dataType: "json",
-  })
-    .done(function (data) {
-      setNextHtml(data);
-    })
-    .fail(function (error) {
-      console.log(error);
-    });
+  // $.ajax(url, {
+  //   type: "GET",
+  //   data: { id: nextId },
+  //   dataType: "json",
+  // })
+  //   .done(function (data) {
+  //     setNextHtml(data);
+  //   })
+  //   .fail(function (error) {
+  //     console.log(error);
+  //   });
+
+  const data = getQuestion(nextId);
+  setNextHtml(data);
 }
 
 /**
@@ -872,7 +847,7 @@ function getNext(nextId) {
  * @param array data: getNext()の返り値
  */
 function setNextHtml(data) {
-  if (data["id"] == 1) {
+  if (data.id == 1) {
     let pref = "";
     let city = "";
 
@@ -883,7 +858,7 @@ function setNextHtml(data) {
 
     city += $("input[name='54']").val();
 
-    data["questions"] = [
+    data.questions = [
       "かしこまりました！お調べいたします！",
       pref + city + "では、20～30万円の助成金がもらえる可能性があります！",
       "助成金は工事費用によって支給額が異なる為、費用の相場を算出いたします。",
@@ -892,8 +867,8 @@ function setNextHtml(data) {
   }
 
   // 一戸建て以外の選択肢
-  if (data["id"] == 10 && $('input[name="1"]').val() == "一戸建て以外") {
-    data["questions"] = [
+  if (data.id == 10 && $('input[name="1"]').val() == "一戸建て以外") {
+    data.questions = [
       "「" + $('input[name="3"]').val() + "」ですね！",
       "今回査定したい箇所はどちらですか？",
     ];
@@ -903,8 +878,8 @@ function setNextHtml(data) {
   if ($('input[name="10"]').val() == "屋根") {
     // 20 → 21（分岐）
     // 延べ床面積 → 屋根はどのような形ですか？
-    if (data["id"] == 17) {
-      data["options"] = {
+    if (data.id == 17) {
+      data.options = {
         "51〜100㎡<br>(15〜30坪)": 21,
         "101〜150㎡<br>(31〜45坪)": 21,
         "151〜200㎡<br>(45〜60坪)": 21,
@@ -915,8 +890,8 @@ function setNextHtml(data) {
 
     // 20 → 21（分岐）
     // 以下から当てはまるものを選択してください。
-    if (data["id"] == 19) {
-      data["options"] = {
+    if (data.id == 19) {
+      data.options = {
         "50㎡(15坪以下)": 21,
         "201㎡(60坪以上)": 21,
         わからない: 21,
@@ -926,16 +901,16 @@ function setNextHtml(data) {
     // 35 → 46（分岐）
     // 隣の家から1メートル以上の幅はありますか？
     // → 屋根の工事経験はありますか？
-    if (data["id"] == "neiborhood") {
-      data["options"] = {
+    if (data.id == "neiborhood") {
+      data.options = {
         はい: 46,
         いいえ: 46,
       };
     }
     // 太陽光パネルを0円で設置できる
     // → 屋根の工事経験はありますか？
-    if (data["id"] == "solar2") {
-      data["options"] = {
+    if (data.id == "solar2") {
+      data.options = {
         はい: 46,
         いいえ: 46,
       };
@@ -943,8 +918,8 @@ function setNextHtml(data) {
 
     // 52 → 53 （分岐）
     // → これまで外壁の工事費用の見積もりをもらったことはありますか？
-    if (data["id"] == 43) {
-      data["options"] = {
+    if (data.id == 43) {
+      data.options = {
         "1ヶ月以内": 53,
         "3ヶ月以内": 53,
         半年以内: 53,
@@ -960,8 +935,8 @@ function setNextHtml(data) {
     // oodori → 21 （折り返す）
     // 現在の外壁材はどのようなものをお使いですか？
     // → 屋根はどのような形ですか
-    if (data["id"] == 20) {
-      data["options"] = {
+    if (data.id == 20) {
+      data.options = {
         モルタル: 21,
         サイディング: 21,
         タイル: 21,
@@ -973,8 +948,8 @@ function setNextHtml(data) {
 
     // 42or43 → 46（折り返す）
     // これまでに、屋根の工事をしたことはありますか？
-    if (data["id"] == 40) {
-      data["options"] = {
+    if (data.id == 40) {
+      data.options = {
         はい: 46,
         いいえ: 46,
         わからない: 46,
@@ -983,11 +958,11 @@ function setNextHtml(data) {
 
     /*
     // 火災保険に加入していますか？ or 施工時期
-    if (data["id"] == "amamori1") {
+    if (data.id == "amamori1") {
 
       // 外壁の剥がれがある場合
       if ($('input[name="40"]').val() == "はい") {
-        data["options"] = {
+        data.options = {
           "はい": 42,
           "いいえ": 42,
           "わからない": 42
@@ -999,8 +974,8 @@ function setNextHtml(data) {
     // 80 → 53 （折り返し）,
     // これまで外壁の工事費用の見積もりをもらったことはありますか？
     // → 屋根の見積もり
-    if (data["id"] == 52) {
-      data["options"] = {
+    if (data.id == 52) {
+      data.options = {
         はい: 53,
         いいえ: 53,
       };
@@ -1008,20 +983,20 @@ function setNextHtml(data) {
   }
 
   //チョーキング
-  if (data["id"] == 38 && $('input[name="36"]').val() == "いいえ") {
-    data["questions"].shift();
+  if (data.id == 38 && $('input[name="36"]').val() == "いいえ") {
+    data.questions.shift();
   }
 
   //ひび
-  if (data["id"] == "kabi" && $('input[name="38"]').val() == "いいえ") {
-    data["questions"].shift();
+  if (data.id == "kabi" && $('input[name="38"]').val() == "いいえ") {
+    data.questions.shift();
   }
 
   //55番調整
-  if (data["id"] == 55) {
+  if (data.id == 55) {
     let time = timeData;
 
-    data["questions"] = [
+    data.questions = [
       "かしこまりました。",
       `20個の質問に${time.min}分${time.sec}秒ほどかけてご回答頂きましたが、あと少しで算定完了になります！`,
       "30秒ほどで結果を送付いたしますので、ショートメッセージ送付先のご入力をお願いします。",
@@ -1029,12 +1004,12 @@ function setNextHtml(data) {
   }
 
   // お断り
-  if (data["id"] == "present") {
+  if (data.id == "present") {
     if (
       $('input[name="52"]').val() == "はい" ||
       $('input[name="53"]').val() == "はい"
     ) {
-      data["questions"].unshift(
+      data.questions.unshift(
         "他社の見積もり中でも大丈夫です。他の業者のお断りも代行します"
       );
     }
@@ -1147,8 +1122,8 @@ function setNextHtml(data) {
   let count = 0;
 
   //質問文を表示
-  $.each(data["questions"], function (idx, elem) {
-    if (data["type"] == "last") {
+  $.each(data.questions, function (idx, elem) {
+    if (data.type == "last") {
       const amount = Math.floor(
         Number($('input[name="q10"]')?.val().slice(0, -2)) / 3
       );
@@ -1164,7 +1139,7 @@ function setNextHtml(data) {
     let match = elem.match(/^img(.*)/);
 
     if (match != null) {
-      let img = getAjaxPath() + "/../assets/img/" + data["images"][match[1]];
+      let img = getAjaxPath() + "/../assets/img/" + data.images[match[1]];
       html += '<img class="chat_admin_center-img" src="' + img + '">';
     } else if (elem == "input") {
       QmodalFlg = 1;
@@ -1253,7 +1228,7 @@ function setNextHtml(data) {
   });
 
   //選択肢のタイプを確認
-  let type = data["type"] == undefined ? "default" : data["type"];
+  let type = data.type == undefined ? "default" : data.type;
 
   //選択肢のHTMLを作成
   count++;
@@ -1262,33 +1237,33 @@ function setNextHtml(data) {
 
   //通常選択肢
   if (type == "default") {
-    let half = Object.keys(data["options"] || [])?.length == 2 ? true : false;
+    let half = Object.keys(data.options || [])?.length == 2 ? true : false;
     if (half == true) {
       optionsHtml +=
         '<div class="chat_item chat_options admin_chat_options admin_chat_options--half">';
     } else {
       optionsHtml += '<div class="chat_item chat_options admin_chat_options">';
     }
-    optionsHtml += `<ul class="option_list" data-itemid="${data["id"]}">`;
-    if (data["nextId"])
-      $.each(data["options"], function (item, answerId) {
-        optionsHtml += `<li class="option" data-selected="${item}" data-answer="${answerId}" data-reply="${data["replies"]}" data-next="${data["nextId"]}"><span>${item}</span></li>`;
+    optionsHtml += `<ul class="option_list" data-itemid="${data.id}">`;
+    if (data.nextId)
+      $.each(data.options, function (item, answerId) {
+        optionsHtml += `<li class="option" data-selected="${item}" data-answer="${answerId}" data-next="${data.nextId}"><span>${item}</span></li>`;
       });
     else
-      $.each(data["options"], function (item, answerId) {
+      $.each(data.options, function (item, answerId) {
         const nextId = answerId == "a93" ? "q11" : "last";
-        optionsHtml += `<li class="option" data-selected="${item}" data-answer="${answerId}" data-reply="${data["replies"]}" data-next="${nextId}"><span>${item}</span></li>`;
+        optionsHtml += `<li class="option" data-selected="${item}" data-answer="${answerId}" data-next="${nextId}"><span>${item}</span></li>`;
       });
     optionsHtml += "</ul>";
     optionsHtml += "</div>";
   } else if (type == "multiselect") {
     optionsHtml +=
       '<div class="chat_item chat_options admin_chat_options admin_chat_options--multiselect">';
-    optionsHtml += '<ul class="option_list" data-itemid="' + data["id"] + '">';
+    optionsHtml += '<ul class="option_list" data-itemid="' + data.id + '">';
 
     optionsHtml +=
       '<li class="option" data-selected="" data-next="" data-is_multiselect="true">';
-    $.each(data["options"], function (item, answerId) {
+    $.each(data.options, function (item, answerId) {
       optionsHtml += `
         <div class="multi_list__item__label">
           <div class="multi_list__item__label-check">
@@ -1303,7 +1278,7 @@ function setNextHtml(data) {
 
     optionsHtml += `
       <div class="chat_next_btn_wrap">
-        <button type="button" id="chat-next-btn-${data["id"]}" data-itemid="${data["id"]}" class="chat__form-btn" data-selected="" data-next="${data["nextId"]}" disabled>次に進む</button>
+        <button type="button" id="chat-next-btn-${data.id}" data-itemid="${data.id}" class="chat__form-btn" data-selected="" data-next="${data.nextId}" disabled>次に進む</button>
       </div>
     `;
 
@@ -1311,42 +1286,42 @@ function setNextHtml(data) {
   } else if (type == "scrollbar") {
     optionsHtml +=
       '<div class="chat_item chat_options admin_chat_options admin_chat_options--scroll">';
-    optionsHtml += '<ul class="option_list" data-itemid="' + data["id"] + '">';
+    optionsHtml += '<ul class="option_list" data-itemid="' + data.id + '">';
 
     optionsHtml +=
       '<li class="option" data-selected="" data-next="" data-is_scroll="true">';
-    optionsHtml += `<div id="scoped-rangeValue-${data["id"]}">0万円</div>`;
+    optionsHtml += `<div id="scoped-rangeValue-${data.id}">0万円</div>`;
     optionsHtml += '<div class="scoped-rangeBox">';
-    optionsHtml += `<button type="button" class="range-minus" id="range-minus-${data["id"]}">-</button>`;
+    optionsHtml += `<button type="button" class="range-minus" id="range-minus-${data.id}">-</button>`;
     optionsHtml += `<input type="range" id="range-${
-      data["id"]
+      data.id
     }" name="loan_amount" min="0" max="${
-      data["id"] == "q01" ? 500 : 1000
+      data.id == "q01" ? 500 : 1000
     }" step="10" value="0">`;
-    optionsHtml += `<button type="button" class="range-plus" id="range-plus-${data["id"]}">+</button>`;
+    optionsHtml += `<button type="button" class="range-plus" id="range-plus-${data.id}">+</button>`;
     optionsHtml += "</div>";
     optionsHtml += "</li>";
     optionsHtml += "</ul>";
 
     optionsHtml += `
       <div class="chat_next_btn_wrap">
-        <button type="button" id="chat-next-btn-${data["id"]}" data-itemid="${
-      data["id"]
+        <button type="button" id="chat-next-btn-${data.id}" data-itemid="${
+      data.id
     }" class="chat__form-btn" data-selected="0万円"  data-answer="${
-      data["id"] == "q01" ? "a01" : "a45"
-    }" data-next="${data["nextId"]}">次に進む</button>
+      data.id == "q01" ? "a01" : "a45"
+    }" data-next="${data.nextId}">次に進む</button>
       </div>
     `;
     optionsHtml += "</div>";
   } else if (type == "dropdown") {
     optionsHtml += `
       <div class="chat_item chat_options admin_chat_options admin_chat_options--dropdown">
-        <ul class="option_list" data-itemid="${data["id"]}">
+        <ul class="option_list" data-itemid="${data.id}">
           <li class="option" data-selected="" data-next="" data-is_dropdown="true">
             <select name="inquiry_job" id="select-job" class="select-job">
               <option value="">選択してください</option>
     `;
-    $.each(data["options"], function (item, answerId) {
+    $.each(data.options, function (item, answerId) {
       optionsHtml += `
         <option value="${answerId}">${item}</option>
       `;
@@ -1357,12 +1332,12 @@ function setNextHtml(data) {
         </ul>
         
         <div class="chat_next_btn_wrap">
-          <button type="button" id="chat-next-btn-${data["id"]}" data-itemid="${data["id"]}" class="chat__form-btn" data-selected="" data-next="${data["nextId"]}" disabled>次に進む</button>
+          <button type="button" id="chat-next-btn-${data.id}" data-itemid="${data.id}" class="chat__form-btn" data-selected="" data-next="${data.nextId}" disabled>次に進む</button>
         </div>
       </div>
     `;
   } else if (type == "last") {
-    const options = isPurpleAnswer() ? data["options2"] : data["options1"];
+    const options = isPurpleAnswer() ? data.options2 : data.options1;
     optionsHtml += `<div class="card-list">`;
     const parameter = $("#parameter")[0].value;
     const number = {
@@ -1699,7 +1674,7 @@ function setNextHtml(data) {
         searchPlaceholderValue: "",
       });
     else if (type == "scrollbar") {
-      new RangeTouch(`#range-${data["id"]}`);
+      new RangeTouch(`#range-${data.id}`);
     }
 
     //最後に「訂正する」を戻す
@@ -1751,4 +1726,160 @@ function debounce(func, timeout = 500) {
       func.apply(this, args);
     }, timeout);
   };
+}
+
+function getQuestion(nextId) {
+  let data = {};
+  switch (nextId) {
+    case "q23":
+      data = {
+        id: nextId,
+        nextId: "q01",
+        questions: [
+          "早速、診断を始めましょう。",
+          "まず、お客様のご希望についてお伺いします！",
+          "どんなカードローンをご希望ですか？(複数選択可）",
+        ],
+        options: {
+          最短30分で借りられる: "a101",
+          誰にもバレずに内緒で借りれる: "a100",
+          金利が低い: "",
+          審査に通りやすい: "a99",
+          口コミの評価が高い: "",
+        },
+        type: "multiselect",
+      };
+      break;
+    case "q01":
+      data = {
+        id: nextId,
+        nextId: "q02",
+        questions: ["いくら借りたいですか？（大体で構いません）"],
+        options: {},
+        type: "scrollbar",
+      };
+      break;
+    case "q02":
+      data = {
+        id: nextId,
+        nextId: "q24",
+        questions: ["いつまでに借りたいですか？"],
+        options: {
+          "30分以内": "a144",
+          今日中: "a06",
+          "3日以内": "a07",
+          "1週間以内": "a08",
+          その他: "a09",
+        },
+      };
+      break;
+    case "q24":
+      data = {
+        id: nextId,
+        nextId: "q06",
+        questions: ["お受け取りはどちらをご希望ですか？"],
+        options: {
+          コンビニATM: "a104",
+          口座振込: "a103",
+        },
+      };
+      break;
+    case "q06":
+      data = {
+        id: nextId,
+        nextId: "q10",
+        questions: [
+          "ありがとうございます！診断完了までもう少しです。",
+          "お客様についてもいくつか教えてください！",
+          "あなたのご職業はどちらですか？",
+        ],
+        options: {
+          公務員: "a25",
+          正社員: "a26",
+          契約社員: "a27",
+          派遣社員: "a28",
+          "パート/アルバイト": "a29",
+          専業主婦: "a30",
+          学生: "a31",
+          "個人事業主/経営者": "a32",
+          無職: "a33",
+        },
+        type: "dropdown",
+      };
+      break;
+    case "q10":
+      data = {
+        id: nextId,
+        nextId: "q25",
+        questions: ["年収はどのくらいですか？"],
+        options: {},
+        type: "scrollbar",
+      };
+      break;
+    case "q25":
+      data = {
+        id: nextId,
+        nextId: "q21",
+        questions: ["収入証明書は手元にありますか？"],
+        options: {
+          はい: "a105",
+          いいえ: "a106",
+        },
+      };
+      break;
+    case "q21":
+      data = {
+        id: nextId,
+        questions: ["過去に借り入れをしたことはありますか？"],
+        options: {
+          はい: "a93",
+          いいえ: "a92",
+        },
+      };
+      break;
+    case "q11":
+      data = {
+        id: nextId,
+        nextId: "last",
+        questions: ["過去に延滞経験はありますか？"],
+        options: {
+          はい: "a52",
+          いいえ: "a50",
+        },
+      };
+    case "last":
+      data = {
+        questions: [
+          'ありがとうございます。診断の結果、あなたは<span class="accent">[AMOUNT]万円</span>まで借りられます',
+          "ご回答頂いた情報からあなたにおすすめのカードローンをご紹介いたします！",
+        ],
+        // LINE
+        options1: ["promise", "acom", "mobit", "aiful"],
+        // // Tiktok
+        // options1: [
+        //   'acom',
+        //   'promise',
+        //   'mobit',
+        //   'aiful',
+        // ],
+        // // Facebook
+        // options1: [
+        //   'promise',
+        //   'acom',
+        //   'mobit',
+        //   'aiful',
+        // ],
+        // // Youtube short
+        // options1: [
+        //   'promise',
+        //   'acom',
+        //   'mobit',
+        //   'aiful',
+        // ],
+        options2: ["mobit", "promise", "acom", "aiful"],
+        type: "last",
+      };
+      break;
+  }
+  return data;
 }
