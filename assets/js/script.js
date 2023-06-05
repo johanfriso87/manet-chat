@@ -1847,35 +1847,14 @@ function getQuestion(nextId) {
           いいえ: "a50",
         },
       };
+      break;
     case "last":
       data = {
         questions: [
           'ありがとうございます。診断の結果、あなたは<span class="accent">[AMOUNT]万円</span>まで借りられます',
           "ご回答頂いた情報からあなたにおすすめのカードローンをご紹介いたします！",
         ],
-        // LINE
-        options1: ["promise", "acom", "mobit", "aiful"],
-        // // Tiktok
-        // options1: [
-        //   'acom',
-        //   'promise',
-        //   'mobit',
-        //   'aiful',
-        // ],
-        // // Facebook
-        // options1: [
-        //   'promise',
-        //   'acom',
-        //   'mobit',
-        //   'aiful',
-        // ],
-        // // Youtube short
-        // options1: [
-        //   'promise',
-        //   'acom',
-        //   'mobit',
-        //   'aiful',
-        // ],
+        options1: ["acom", "promise", "mobit", "aiful"],
         options2: ["mobit", "promise", "acom", "aiful"],
         type: "last",
       };
