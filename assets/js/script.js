@@ -1855,7 +1855,7 @@ function getQuestion(nextId) {
           "ご回答頂いた情報からあなたにおすすめのカードローンをご紹介いたします！",
         ],
         options1: ["acom", "promise", "mobit", "aiful"],
-        options2: ["mobit", "promise", "acom", "aiful"],
+        options2: ["mobit", "acom", "promise", "aiful"],
         type: "last",
       };
       break;
