@@ -327,9 +327,9 @@ $(function () {
   const inputEvent = isiOS ? "touchstart" : "input";
 
   $(document).on(
-    inputEvent,
+	"input",
     "input[type='range']",
-    debounce(function (event) {
+    function (event) {
       const itemId = event.target.id.split("-")[1];
       const value = event.target.value;
 
@@ -358,7 +358,7 @@ $(function () {
           ? "a48"
           : "a49";
       $(`#chat-next-btn-${itemId}`)[0].setAttribute("data-answer", answer);
-    })
+  }
   );
 
   $(document).on("click", ".range-minus", function () {
@@ -1674,7 +1674,7 @@ function setNextHtml(data) {
         searchPlaceholderValue: "",
       });
     else if (type == "scrollbar") {
-      new RangeTouch(`#range-${data.id}`);
+      $('input[type="range"]').rangeslider({polyfill: false});
     }
 
     //最後に「訂正する」を戻す
@@ -1718,7 +1718,7 @@ function isPurpleAnswer() {
   return result;
 }
 
-function debounce(func, timeout = 500) {
+function debounce(func, timeout = 100) {
   let timer;
   return (...args) => {
     clearTimeout(timer);
