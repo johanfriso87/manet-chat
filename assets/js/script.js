@@ -21,25 +21,6 @@ $(window).on("click", function (e) {
   console.log(e.target);
 });
 
-var start = new Date();
-var timeData = {
-  min: 0,
-  sec: 0,
-};
-var now = 0;
-var datet = 0;
-
-function updateTime() {
-  now = new Date();
-
-  datet = parseInt((now.getTime() - start.getTime()) / 1000);
-
-  timeData.min = parseInt((datet / 60) % 60);
-  timeData.sec = datet % 60;
-}
-
-setInterval(updateTime, 1000);
-
 // ------------------------------
 // 100vh取得
 // ------------------------------
@@ -209,6 +190,84 @@ $(function () {
     $("#modal-first").addClass("is-selected");
   });
 
+  function updateRemainingTime() {
+    var now = new Date();
+    var targetTime = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+      1,
+      0,
+      0
+    );
+    var remainingTime = targetTime - now;
+
+    if (remainingTime <= 0) {
+      $(".first-modal__body__footer").hide();
+      clearInterval(timer);
+    } else {
+      $(".first-modal__body__footer").show();
+    }
+
+    var hours = Math.floor(remainingTime / (1000 * 60 * 60));
+    var minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+    document.getElementById("remaining-hour").textContent = hours
+      .toString()
+      .padStart(2, "0");
+    document.getElementById("remaining-minute").textContent = minutes
+      .toString()
+      .padStart(2, "0");
+    document.getElementById("remaining-second").textContent = seconds
+      .toString()
+      .padStart(2, "0");
+  }
+
+  // Update every second
+  var timer = setInterval(updateRemainingTime, 1000);
+  $(document).on("load", updateRemainingTime);
+
+  function updateRemainingTime() {
+    var now = new Date();
+    var targetTime = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+      21,
+      0,
+      0
+    );
+    var remainingTime = targetTime - now;
+
+    if (remainingTime <= 0) {
+      $(".first-modal__body__footer").hide();
+      clearInterval(timer);
+    } else {
+      $(".first-modal__body__footer").show();
+    }
+
+    var hours = Math.floor(remainingTime / (1000 * 60 * 60));
+    var minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+    document.getElementById("remaining-hour").textContent = hours
+      .toString()
+      .padStart(2, "0");
+    document.getElementById("remaining-minute").textContent = minutes
+      .toString()
+      .padStart(2, "0");
+    document.getElementById("remaining-second").textContent = seconds
+      .toString()
+      .padStart(2, "0");
+  }
+
+  // Initial update
+  updateRemainingTime();
+
+  // Update every second
+  var timer = setInterval(updateRemainingTime, 1000);
+
   // ------------------------------
   // 選択肢クリック
   // ------------------------------
@@ -326,40 +385,36 @@ $(function () {
   // Event listener for input or touch events
   const inputEvent = isiOS ? "touchstart" : "input";
 
-  $(document).on(
-	"input",
-    "input[type='range']",
-    function (event) {
-      const itemId = event.target.id.split("-")[1];
-      const value = event.target.value;
+  $(document).on("input", "input[type='range']", function (event) {
+    const itemId = event.target.id.split("-")[1];
+    const value = event.target.value;
 
-      $(`#scoped-rangeValue-${itemId}`).text(value + "万円");
-      $(`#chat-next-btn-${itemId}`)[0].setAttribute(
-        "data-selected",
-        value + "万円"
-      );
+    $(`#scoped-rangeValue-${itemId}`).text(value + "万円");
+    $(`#chat-next-btn-${itemId}`)[0].setAttribute(
+      "data-selected",
+      value + "万円"
+    );
 
-      const answer =
-        itemId == "q01"
-          ? value <= 10
-            ? "a01"
-            : value <= 50
-            ? "a02"
-            : value <= 100
-            ? "a03"
-            : "a04"
-          : value <= 120
-          ? "a45"
-          : value <= 300
-          ? "a46"
-          : value <= 500
-          ? "a47"
-          : value <= 700
-          ? "a48"
-          : "a49";
-      $(`#chat-next-btn-${itemId}`)[0].setAttribute("data-answer", answer);
-  }
-  );
+    const answer =
+      itemId == "q01"
+        ? value <= 10
+          ? "a01"
+          : value <= 50
+          ? "a02"
+          : value <= 100
+          ? "a03"
+          : "a04"
+        : value <= 120
+        ? "a45"
+        : value <= 300
+        ? "a46"
+        : value <= 500
+        ? "a47"
+        : value <= 700
+        ? "a48"
+        : "a49";
+    $(`#chat-next-btn-${itemId}`)[0].setAttribute("data-answer", answer);
+  });
 
   $(document).on("click", ".range-minus", function () {
     const itemId = $(this).parents(".option_list").data("itemid");
@@ -1674,7 +1729,7 @@ function setNextHtml(data) {
         searchPlaceholderValue: "",
       });
     else if (type == "scrollbar") {
-      $('input[type="range"]').rangeslider({polyfill: false});
+      $('input[type="range"]').rangeslider({ polyfill: false });
     }
 
     //最後に「訂正する」を戻す

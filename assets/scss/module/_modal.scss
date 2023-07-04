@@ -104,7 +104,12 @@
 
         @media ($sp) {
           width: 70%;
-          font-size: 13px;
+          font-size: 20px;
+        }
+
+        @media ($ssp) {
+          width: 70%;
+          font-size: 14px;
         }
       }
 
@@ -124,6 +129,46 @@
           height: 65px;
           margin: 0 5px;
         }
+      }
+    }
+
+    &__footer {
+      margin-top: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @media ($sp) {
+        flex-direction: column;
+      }
+
+      &__text {
+        display: flex;
+        align-items: center;
+      }
+
+      &__red {
+        color: red;
+        font-size: 2em;
+        font-weight: 700;
+      }
+      &__normal {
+        color: #111111;
+        font-size: 1.3em;
+        font-weight: 700;
+      }
+      &__white {
+        color: white;
+      }
+      &__yellow {
+        color: yellow;
+      }
+      &__remaining {
+        background: #11665d;
+        padding: 1em;
+        border-radius: 0.3em;
+        display: flex;
+        align-items: center;
       }
     }
 

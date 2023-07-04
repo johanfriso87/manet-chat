@@ -22,6 +22,11 @@
       <symbol viewBox="0 0 14.8 8.8" id="iconArrowDown">
           <path d="M7.4,8.8L0.7,2.1c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0L7.4,6l5.3-5.3c0.4-0.4,1-0.4,1.4,0s0.4,1,0,1.4L7.4,8.8z"></path>
       </symbol>
+      <symbol viewBox="0 0 24 24" id="iconClock">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="6" x2="12" y2="12"/>
+        <line x1="12" y1="12" x2="16" y2="16"/>
+      </symbol>
       <symbol viewBox="0 0 10 10" id="iconArrowDownFilled">
           <path d="M9.5,2.75l-4.5,4.5l-4.5-4.5H9.5z"></path>
       </symbol>
@@ -389,7 +394,7 @@
         </div>
         <div class="first-modal__body">
           <div class="first-modal__body__head">
-            <div class="first-modal__body__head-text">カードローンは金利ゼロ・最短30分で借りられる<br>ことを知っていましたか？</div>
+            <div class="first-modal__body__head-text">金利ゼロ・最短30分で借りられる<br>カードローンがあることを知っていましたか？</div>
             <div class="first-modal__body__head-operator">
             </div>
           </div>
@@ -409,8 +414,25 @@
               </label>
             </li>
           </ul>
+          <div class="first-modal__body__footer">
+            <span class="first-modal__body__footer__text">
+              <span class="first-modal__body__footer__red">今日中</span>
+              <span class="first-modal__body__footer__normal">に借入するなら</span>
+            </span>
+            <span class="first-modal__body__footer__remaining">            
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+              </svg>
+              <span class="first-modal__body__footer__white">残り</span>
+              <span class="first-modal__body__footer__yellow" id="remaining-hour">00</span>
+              <span class="first-modal__body__footer__white">時間</span>
+              <span class="first-modal__body__footer__yellow" id="remaining-minute">00</span>
+              <span class="first-modal__body__footer__white">分</span>
+              <span class="first-modal__body__footer__yellow" id="remaining-second">00</span>
+              <span class="first-modal__body__footer__white">秒</span>
+            </span>
+          </div>
         </div>
-
       </div>
     </div>
   </div>
