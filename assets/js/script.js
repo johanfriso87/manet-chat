@@ -401,9 +401,7 @@ $(function () {
           ? "a01"
           : value <= 50
           ? "a02"
-          : value <= 100
-          ? "a03"
-          : "a04"
+          : "a03"
         : value <= 120
         ? "a45"
         : value <= 300
@@ -434,9 +432,7 @@ $(function () {
           ? "a01"
           : value <= 50
           ? "a02"
-          : value <= 100
-          ? "a03"
-          : "a04"
+          : "a03"
         : value <= 120
         ? "a45"
         : value <= 300
@@ -467,9 +463,7 @@ $(function () {
           ? "a01"
           : value <= 50
           ? "a02"
-          : value <= 100
-          ? "a03"
-          : "a04"
+          : "a03"
         : value <= 120
         ? "a45"
         : value <= 300
@@ -1341,6 +1335,7 @@ function setNextHtml(data) {
   } else if (type == "scrollbar") {
     optionsHtml +=
       '<div class="chat_item chat_options admin_chat_options admin_chat_options--scroll">';
+    if (data.id == "q01") optionsHtml += '<div class="option_list_container">';
     optionsHtml += '<ul class="option_list" data-itemid="' + data.id + '">';
 
     optionsHtml +=
@@ -1351,13 +1346,18 @@ function setNextHtml(data) {
     optionsHtml += `<input type="range" id="range-${
       data.id
     }" name="loan_amount" min="0" max="${
-      data.id == "q01" ? 500 : 1000
+      data.id == "q01" ? 100 : 1000
     }" step="10" value="0">`;
     optionsHtml += `<button type="button" class="range-plus" id="range-plus-${data.id}">+</button>`;
     optionsHtml += "</div>";
     optionsHtml += "</li>";
     optionsHtml += "</ul>";
-
+    if (data.id == "q01") {
+      optionsHtml += `<ul class="option_list" data-itemid="${data.id}">`;
+      optionsHtml += `<li class="option" data-selected="100万円以上" data-answer="a45" data-next="q02"><span>100万円以上の方はこちらをチェック</span></li>`;
+      optionsHtml += `</ul>`;
+      optionsHtml += "</div/>";
+    }
     optionsHtml += `
       <div class="chat_next_btn_wrap">
         <button type="button" id="chat-next-btn-${data.id}" data-itemid="${
@@ -1416,8 +1416,10 @@ function setNextHtml(data) {
         promise: `
           <article data-theme="" data-style="simple" class="p-card CardItem" data-name="promise" data-location="default">
             <header class="p-card_header">
-              <h3 class="p-card_header_title">
-                ${orderSpan}<a href="${url}">プロミス</a></h3>
+              <h3 class="p-card_header_title">${orderSpan}<a href="${url}">プロミス</a></h3>
+              <div class="p-card_header_stars" style="--rating: 4.0; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
+                <h3 class="p-card_header_rating">4.8</h3>
+              </div>
             </header>
             <div class="p-card_content">
               <p class="CardItem__pushPoint">
@@ -1425,7 +1427,7 @@ function setNextHtml(data) {
                   <svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
                     <use xlink:href="#iconThumb"></use>
                   </svg>Point
-                </span> プロミスは郵送物なし＆カードレスで絶対にバレたくない人におすすめ！ 
+                </span> <span style="color: red;">WEB完結＆郵送物なし</span><span style="text-decoration: underline;">で誰にもバレない</span> 
               </p>
               <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags">
                 <a href="${url}" class="p-card_infoImage">
@@ -1433,12 +1435,30 @@ function setNextHtml(data) {
                 </a>
                 <div class="CardItemToggleTag CardItemToggleTag--compact">
                   <ul class="CardItemToggleTag__list">
-                    <li class="activate">来店不要</li>
-                    <li class="activate">Web申込可</li>
-                    <li class="activate">他社借入可</li>
-                    <li class="activate">収入書不要</li>
-                    <li class="activate">土日祝可</li>
-                    <li class="activate">バレない</li>
+                    <li>
+                      <div class="label-check">
+                        <input type="checkbox">
+                      </div>
+                      <div class="label-text">スマホと本人確認書類ひとつ※で簡単申し込み可能</div>
+                    </li>
+                    <li>
+                      <div class="label-check">
+                        <input type="checkbox">
+                      </div>
+                      <div class="label-text">郵送物や電話連絡も一切ナシ！</div>
+                    </li>
+                    <li>
+                      <div class="label-check">
+                        <input type="checkbox">
+                      </div>
+                      <div class="label-text">電話対応が丁寧！</div>
+                    </li>
+                    <li>
+                      <div class="label-check">
+                        <input type="checkbox">
+                      </div>
+                      <div class="label-text">30日間金利ゼロ！</div>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -1485,20 +1505,48 @@ function setNextHtml(data) {
           <article data-theme="" data-style="simple" class="p-card CardItem" data-name="acom" data-location="default">
             <header class="p-card_header">
               <h3 class="p-card_header_title">${orderSpan}<a href="${url}">アコム</a></h3>
+              <div class="p-card_header_stars" style="--rating: 4.8; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
+                <h3 class="p-card_header_rating">4.8</h3>
+              </div>
             </header>
             <div class="p-card_content">
               <p class="CardItem__pushPoint"><span role="tooltip" class="CardItem__pushPoint__point"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
                 <use xlink:href="#iconThumb"></use>
-                </svg>Point</span> アコムなら24時間最短1分で振込！ </p>
+                </svg>Point</span style="color: red;"> 利用者数No.1！カードローンランキング3部門No1！<br />
+                　審査に不安でも、誰にもバレずに今すぐお金を借りたい人にオススメ！ </p>
             <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags"><a href="${url}" class="p-card_infoImage"><img alt="アコム" src="./assets/img/services/acom.jpg"></a>
                 <div class="CardItemToggleTag CardItemToggleTag--compact">
                     <ul class="CardItemToggleTag__list">
-                        <li class="activate">来店不要</li>
-                        <li class="activate">Web申込可</li>
-                        <li class="activate">他社借入可</li>
-                        <li class="activate">収入書不要</li>
-                        <li class="activate">土日祝可</li>
-                        <li class="activate">バレない</li>
+                      <li>
+                        <div class="label-check">
+                          <input type="checkbox">
+                        </div>
+                        <div class="label-text">WEBで簡単申し込み、最短30分※で審査結果が届く</div>
+                      </li>
+                      <li>
+                        <div class="label-check">
+                          <input type="checkbox">
+                        </div>
+                        <div class="label-text">他社借り入れ・延滞経験ありでもOK！</div>
+                      </li>
+                      <li>
+                        <div class="label-check">
+                          <input type="checkbox">
+                        </div>
+                        <div class="label-text">郵送物や電話連絡も一切ナシ！</div>
+                      </li>
+                      <li>
+                        <div class="label-check">
+                          <input type="checkbox">
+                        </div>
+                        <div class="label-text">コンビニのATMで引き出せる</div>
+                      </li>
+                      <li>
+                        <div class="label-check">
+                          <input type="checkbox">
+                        </div>
+                        <div class="label-text">30日間金利ゼロ！</div>
+                      </li>
                     </ul>
                 </div>
             </div>
@@ -1542,22 +1590,36 @@ function setNextHtml(data) {
         mobit: `
           <article data-theme="" data-style="simple" class="p-card CardItem" data-name="mobit" data-location="default">
     <header class="p-card_header">
-        <h3 class="p-card_header_title">${orderSpan}
-            <a href="${url}">SMBCモビット</a></h3>
+        <h3 class="p-card_header_title">${orderSpan}<a href="${url}">SMBCモビット</a></h3>
+        <div class="p-card_header_stars" style="--rating: 3.9; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
+          <h3 class="p-card_header_rating">4.8</h3>
+        </div>
     </header>
     <div class="p-card_content">
         <p class="CardItem__pushPoint"><span role="tooltip" class="CardItem__pushPoint__point"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
                     <use xlink:href="#iconThumb"></use>
-                </svg>Point</span> モビットのWEB完結申込なら電話確認一切なしで、バレない！ </p>
-        <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags"><a href="${url}" class="p-card_infoImage"><img alt="SMBCモビット" src="./assets/img/services/mobit_300x250.png"></a>
+                </svg>Point</span> <span style="color: red;">誰にもバレずに</span><span style="text-decoration: underline;">スピード申し込み</span></p>
+        <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags"><a href="${url}" class="p-card_infoImage"><img alt="SMBCモビット" src="./assets/img/services/mobit.png"></a>
             <div class="CardItemToggleTag CardItemToggleTag--compact">
                 <ul class="CardItemToggleTag__list">
-                    <li class="activate">来店不要</li>
-                    <li class="activate">Web申込可</li>
-                    <li class="activate">他社借入可</li>
-                    <li aria-hidden="true" class="">収入書不要</li>
-                    <li aria-hidden="true" class="">土日祝可</li>
-                    <li class="activate">バレない</li>
+                  <li>
+                    <div class="label-check">
+                      <input type="checkbox">
+                    </div>
+                    <div class="label-text">来店不要・スマホで手続き可能</div>
+                  </li>
+                  <li>
+                    <div class="label-check">
+                      <input type="checkbox">
+                    </div>
+                    <div class="label-text">電話連絡や郵便物なども一切ナシ！</div>
+                  </li>
+                  <li>
+                    <div class="label-check">
+                      <input type="checkbox">
+                    </div>
+                    <div class="label-text">申し込みから借入まで一切誰とも顔を合わさない</div>
+                  </li>
                 </ul>
             </div>
         </div>
@@ -1603,25 +1665,45 @@ function setNextHtml(data) {
         aiful: `
           <article data-theme="" data-style="simple" class="p-card CardItem" data-name="aiful" data-location="default">
       <header class="p-card_header">
-          <h3 class="p-card_header_title">
-              ${orderSpan}<a href="${url}">アイフル</a></h3>
+          <h3 class="p-card_header_title">${orderSpan}<a href="${url}">アイフル</a></h3>
+          <div class="p-card_header_stars" style="--rating: 4.3; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
+            <h3 class="p-card_header_rating">4.8</h3>
+          </div>
       </header>
       <div class="p-card_content">
           <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags"><a href="${url}" class="p-card_infoImage"><img alt="アイフル" src="./assets/img/services/aiful.jpg"></a>
               <div class="CardItemToggleTag CardItemToggleTag--compact">
                   <ul class="CardItemToggleTag__list">
-                      <li class="activate">来店不要</li>
-                      <li class="activate">Web申込可</li>
-                      <li class="activate">他社借入可</li>
-                      <li class="activate">収入書不要</li>
-                      <li class="activate">土日祝可</li>
-                      <li class="activate">バレない</li>
+                    <li>
+                      <div class="label-check">
+                        <input type="checkbox">
+                      </div>
+                      <div class="label-text">審査時間は最短20分、スマホで簡単申し込み可能</div>
+                    </li>
+                    <li>
+                      <div class="label-check">
+                        <input type="checkbox">
+                      </div>
+                      <div class="label-text">他社借り入れありでもOK</div>
+                    </li>
+                    <li>
+                      <div class="label-check">
+                        <input type="checkbox">
+                      </div>
+                      <div class="label-text">借入できるかどうか分かる1秒事前診断あり！</div>
+                    </li>
+                    <li>
+                      <div class="label-check">
+                        <input type="checkbox">
+                      </div>
+                      <div class="label-text">30日間金利ゼロ！</div>
+                    </li>
                   </ul>
               </div>
           </div>
           <p class="CardItem__pushPoint"><span role="tooltip" class="CardItem__pushPoint__point"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
                       <use xlink:href="#iconThumb"></use>
-                  </svg>Point</span> 初めてのご契約で最大30日間利息0円！ </p>              
+                  </svg>Point</span><span style="color: red;">最短20分で審査通過</span>、<span style="text-decoration: underline;">すぐに借りられます</span><br /><span style="font-size: 0.6rem;">※お申込みの時間によってはご希望に沿えない場合がございます</span></p>              
           <div class="p-card_infoArticle_blocks">
               <p data-block-type="article-point" class="p-card_infoArticle_block is-title has-icon"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon" data-icon="iconCircleBold">
                       <use xlink:href="#iconCircleBold"></use>
