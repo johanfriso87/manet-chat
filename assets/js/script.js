@@ -1427,7 +1427,9 @@ function setNextHtml(data) {
                   <svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
                     <use xlink:href="#iconThumb"></use>
                   </svg>Point
-                </span> <span style="color: red;">WEB完結＆郵送物なし</span><span style="text-decoration: underline;">で誰にもバレない</span> 
+                </span> 
+                <span style="color: red;">WEB完結＆郵送物なし</span>
+                <span style="text-decoration: underline;">で誰にもバレない</span> 
               </p>
               <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags">
                 <a href="${url}" class="p-card_infoImage">
@@ -1460,6 +1462,7 @@ function setNextHtml(data) {
                       <div class="label-text">30日間金利ゼロ！</div>
                     </li>
                   </ul>
+                  <span style="font-size: 9px;">※お申し込みのご状況によっては収入証明書の提出が必要な場合がございます。</span>
                 </div>
               </div>
               <dl class="CardItemTable u-mt-3 CardItemTable--simple" data-jest="cardItemTable">
@@ -1510,9 +1513,13 @@ function setNextHtml(data) {
               </div>
             </header>
             <div class="p-card_content">
-              <p class="CardItem__pushPoint"><span role="tooltip" class="CardItem__pushPoint__point"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
-                <use xlink:href="#iconThumb"></use>
-                </svg>Point</span style="color: red;"> 利用者数No.1！カードローンランキング3部門No1！<br />
+              <p class="CardItem__pushPoint">
+                <span role="tooltip" class="CardItem__pushPoint__point">
+                  <svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
+                    <use xlink:href="#iconThumb"></use>
+                  </svg>Point
+                </span>
+                <span style="color: red;"> 利用者数No.1！カードローンランキング3部門No1！</span><br />
                 　審査に不安でも、誰にもバレずに今すぐお金を借りたい人にオススメ！ </p>
             <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags"><a href="${url}" class="p-card_infoImage"><img alt="アコム" src="./assets/img/services/acom.jpg"></a>
                 <div class="CardItemToggleTag CardItemToggleTag--compact">
@@ -1596,9 +1603,15 @@ function setNextHtml(data) {
         </div>
     </header>
     <div class="p-card_content">
-        <p class="CardItem__pushPoint"><span role="tooltip" class="CardItem__pushPoint__point"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
-                    <use xlink:href="#iconThumb"></use>
-                </svg>Point</span> <span style="color: red;">誰にもバレずに</span><span style="text-decoration: underline;">スピード申し込み</span></p>
+        <p class="CardItem__pushPoint">
+          <span role="tooltip" class="CardItem__pushPoint__point">
+            <svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
+              <use xlink:href="#iconThumb"></use>
+            </svg>Point
+          </span> 
+          <span style="color: red;">誰にもバレずに</span>
+          <span style="text-decoration: underline;">スピード申し込み</span>
+        </p>
         <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags"><a href="${url}" class="p-card_infoImage"><img alt="SMBCモビット" src="./assets/img/services/mobit.png"></a>
             <div class="CardItemToggleTag CardItemToggleTag--compact">
                 <ul class="CardItemToggleTag__list">
@@ -1671,6 +1684,16 @@ function setNextHtml(data) {
           </div>
       </header>
       <div class="p-card_content">
+        <p class="CardItem__pushPoint">
+          <span role="tooltip" class="CardItem__pushPoint__point">
+            <svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
+              <use xlink:href="#iconThumb"></use>
+            </svg>Point
+          </span>
+          <span style="color: red;">最短20分で審査通過</span>、
+          <span style="text-decoration: underline;">すぐに借りられます</span><br />
+          <span style="font-size: 0.6rem;">※お申込みの時間によってはご希望に沿えない場合がございます</span>
+        </p>   
           <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags"><a href="${url}" class="p-card_infoImage"><img alt="アイフル" src="./assets/img/services/aiful.jpg"></a>
               <div class="CardItemToggleTag CardItemToggleTag--compact">
                   <ul class="CardItemToggleTag__list">
@@ -1700,11 +1723,8 @@ function setNextHtml(data) {
                     </li>
                   </ul>
               </div>
-          </div>
-          <p class="CardItem__pushPoint"><span role="tooltip" class="CardItem__pushPoint__point"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
-                      <use xlink:href="#iconThumb"></use>
-                  </svg>Point</span><span style="color: red;">最短20分で審査通過</span>、<span style="text-decoration: underline;">すぐに借りられます</span><br /><span style="font-size: 0.6rem;">※お申込みの時間によってはご希望に沿えない場合がございます</span></p>              
-          <div class="p-card_infoArticle_blocks">
+          </div>           
+          <div class="p-card_infoArticle_blocks" style="display: none;">
               <p data-block-type="article-point" class="p-card_infoArticle_block is-title has-icon"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon" data-icon="iconCircleBold">
                       <use xlink:href="#iconCircleBold"></use>
                   </svg> <span>職場・自宅への電話連絡が原則なし</span></p>
