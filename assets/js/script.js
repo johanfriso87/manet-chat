@@ -1417,8 +1417,8 @@ function setNextHtml(data) {
           <article data-theme="" data-style="simple" class="p-card CardItem" data-name="promise" data-location="default" style="background-color: #fff;">
             <header class="p-card_header" style="background-color: #fff;">
               <h3 class="p-card_header_title">${orderSpan}<a href="${url}">プロミス</a></h3>
-              <div class="p-card_header_stars" style="--rating: 4.3; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
-                <h3 class="p-card_header_rating">4.3</h3>
+              <div class="p-card_header_stars" style="--rating: 4.0; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
+                <h3 class="p-card_header_rating">4.0</h3>
               </div>
             </header>
             <div class="p-card_content">
@@ -1598,8 +1598,8 @@ function setNextHtml(data) {
           <article data-theme="" data-style="simple" class="p-card CardItem" data-name="mobit" data-location="default" style="background-color: #fff;">
     <header class="p-card_header" style="background-color: #fff;">
         <h3 class="p-card_header_title">${orderSpan}<a href="${url}">SMBCモビット</a></h3>
-        <div class="p-card_header_stars" style="--rating: 4.0; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
-          <h3 class="p-card_header_rating">4.0</h3>
+        <div class="p-card_header_stars" style="--rating: 3.9; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
+          <h3 class="p-card_header_rating">3.9</h3>
         </div>
     </header>
     <div class="p-card_content">
@@ -1679,8 +1679,8 @@ function setNextHtml(data) {
           <article data-theme="" data-style="simple" class="p-card CardItem" data-name="aiful" data-location="default" style="background-color: #fff;">
       <header class="p-card_header" style="background-color: #fff;">
           <h3 class="p-card_header_title">${orderSpan}<a href="${url}">アイフル</a></h3>
-          <div class="p-card_header_stars" style="--rating: 3.9; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
-            <h3 class="p-card_header_rating">3.9</h3>
+          <div class="p-card_header_stars" style="--rating: 4.3; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
+            <h3 class="p-card_header_rating">4.3</h3>
           </div>
       </header>
       <div class="p-card_content">
