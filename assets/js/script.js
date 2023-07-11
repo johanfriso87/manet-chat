@@ -1414,11 +1414,11 @@ function setNextHtml(data) {
           : ``;
       const prepared = {
         promise: `
-          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="promise" data-location="default">
-            <header class="p-card_header">
+          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="promise" data-location="default" style="background-color: #fff;">
+            <header class="p-card_header" style="background-color: #fff;">
               <h3 class="p-card_header_title">${orderSpan}<a href="${url}">プロミス</a></h3>
-              <div class="p-card_header_stars" style="--rating: 4.0; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
-                <h3 class="p-card_header_rating">4.8</h3>
+              <div class="p-card_header_stars" style="--rating: 4.3; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
+                <h3 class="p-card_header_rating">4.3</h3>
               </div>
             </header>
             <div class="p-card_content">
@@ -1505,8 +1505,8 @@ function setNextHtml(data) {
           </article>
         `,
         acom: `
-          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="acom" data-location="default">
-            <header class="p-card_header">
+          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="acom" data-location="default" style="background-color: #fffdea;">
+            <header class="p-card_header" style="background-color: #fffdea;">
               <h3 class="p-card_header_title">${orderSpan}<a href="${url}">アコム</a></h3>
               <div class="p-card_header_stars" style="--rating: 4.8; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
                 <h3 class="p-card_header_rating">4.8</h3>
@@ -1595,11 +1595,11 @@ function setNextHtml(data) {
       </article>
         `,
         mobit: `
-          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="mobit" data-location="default">
-    <header class="p-card_header">
+          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="mobit" data-location="default" style="background-color: #fff;">
+    <header class="p-card_header" style="background-color: #fff;">
         <h3 class="p-card_header_title">${orderSpan}<a href="${url}">SMBCモビット</a></h3>
-        <div class="p-card_header_stars" style="--rating: 3.9; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
-          <h3 class="p-card_header_rating">4.8</h3>
+        <div class="p-card_header_stars" style="--rating: 4.0; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
+          <h3 class="p-card_header_rating">4.0</h3>
         </div>
     </header>
     <div class="p-card_content">
@@ -1676,11 +1676,11 @@ function setNextHtml(data) {
 </article>
         `,
         aiful: `
-          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="aiful" data-location="default">
-      <header class="p-card_header">
+          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="aiful" data-location="default" style="background-color: #fff;">
+      <header class="p-card_header" style="background-color: #fff;">
           <h3 class="p-card_header_title">${orderSpan}<a href="${url}">アイフル</a></h3>
-          <div class="p-card_header_stars" style="--rating: 4.3; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
-            <h3 class="p-card_header_rating">4.8</h3>
+          <div class="p-card_header_stars" style="--rating: 3.9; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
+            <h3 class="p-card_header_rating">3.9</h3>
           </div>
       </header>
       <div class="p-card_content">
@@ -2011,8 +2011,8 @@ function getQuestion(nextId) {
           'ありがとうございます。診断の結果、あなたは<span class="accent">[AMOUNT]万円</span>まで借りられます',
           "ご回答頂いた情報からあなたにおすすめのカードローンをご紹介いたします！",
         ],
-        options1: ["acom", "promise", "mobit", "aiful"],
-        options2: ["mobit", "acom", "promise", "aiful"],
+        options1: ["acom", "aiful", "promise", "mobit"],
+        options2: ["acom", "aiful", "promise", "mobit"],
         type: "last",
       };
       break;
