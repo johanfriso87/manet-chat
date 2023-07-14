@@ -129,46 +129,46 @@
           height: 65px;
           margin: 0 5px;
         }
+        @media ($ssp) {
+          width: 50px;
+          height: 50px;
+        }
       }
     }
 
     &__footer {
-      margin-top: 1em;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-end;
+      justify-content: space-between;
+      width: 50%;
+      margin: 1em auto 0 auto;
+      font-size: 0.9em;
+      font-weight: 500;
+      background: #00371d;
+      padding: 0.3em 1em;
+      border-radius: 0.3em;
 
       @media ($sp) {
-        flex-direction: column;
+        width: 100%;
+        margin: 0.5em 0 0 0;
       }
 
-      &__text {
-        display: flex;
-        align-items: center;
+      .comment {
+        margin-left: 1em;
+        white-space: nowrap;
+      }
+      
+      .clock {
+        white-space: nowrap;
       }
 
-      &__red {
-        color: red;
-        font-size: 2em;
-        font-weight: 700;
-      }
-      &__normal {
-        color: #111111;
-        font-size: 1.3em;
-        font-weight: 700;
-      }
-      &__white {
+      .white {
         color: white;
       }
-      &__yellow {
-        color: yellow;
-      }
-      &__remaining {
-        background: #11665d;
-        padding: 1em;
-        border-radius: 0.3em;
-        display: flex;
-        align-items: center;
+      .yellow {
+        color: #ffc700;
+        font-size: 1.5em;
+        font-weight: 600;
       }
     }
 
@@ -198,16 +198,12 @@
 
   &__options {
     display: flex;
-    justify-content: space-between;
-
-    @media ($sp) {
-      flex-wrap: wrap;
-    }
+    justify-content: space-evenly;
   }
 
   &__option {
     margin-top: 20px;
-    width: 48%;
+    width: 35%;
     position: relative;
     &:after {
       @include hand;
@@ -221,7 +217,7 @@
     }
 
     @media ($sp) {
-      width: 90%;
+      margin-top: 10px;
     }
 
     &-btn {

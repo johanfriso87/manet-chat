@@ -217,9 +217,7 @@ $(function () {
     var minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
 
-    document.getElementById("remaining-hour").textContent = hours
-      .toString()
-      .padStart(2, "0");
+    document.getElementById("remaining-hour").textContent = hours.toString();
     document.getElementById("remaining-minute").textContent = minutes
       .toString()
       .padStart(2, "0");
@@ -1486,8 +1484,8 @@ function setNextHtml(data) {
                     <use xlink:href="#iconThumb"></use>
                   </svg>Point
                 </span>
-                <span class="CardItem__pushPoint__text red"> 最短30分で審査通過</span>
-                <span class="CardItem__pushPoint__text">、すぐに借りられます</span>
+                <span class="CardItem__pushPoint__text red"> 最短30分で審査通過</span>、
+                <span class="CardItem__pushPoint__text">すぐに借りられます</span>
               </p>
             <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags"><a href="${url}" class="p-card_infoImage"><img alt="アコム" src="./assets/img/services/acom.jpg"></a>
                 <div class="CardItemToggleTag CardItemToggleTag--compact">
