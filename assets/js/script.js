@@ -200,9 +200,9 @@ $(function () {
       now.getFullYear(),
       now.getMonth(),
       now.getDate(),
-      23,
-      59,
-      59
+      21,
+      0,
+      0
     );
     var remainingTime = targetTime - now;
 
