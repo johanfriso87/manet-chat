@@ -1188,31 +1188,41 @@
         }
       }
 
-      .p-card_header_stars {
-        --percent: calc(var(--rating) / 5 * 100%);
-  
+      .wrapper-rating {
         display: flex;
-        font-size: var(--star-size);
-        font-family: Times; // make sure star appears correctly
-        line-height: 1;
-        background-color: #f5f4f0;
+
+        .comment {
+          font-size: 0.7rem;
+          font-weight: 800;
+          margin-right: 0.5em;
+        }
         
-        &::before {
-          content: '\2605\2605\2605\2605\2605';
-          letter-spacing: 3px;
-          background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
+        .p-card_header_stars {
+          --percent: calc(var(--rating) / 5 * 100%);
+    
+          display: flex;
+          font-size: var(--star-size);
+          font-family: Times; // make sure star appears correctly
+          line-height: 1;
+          background-color: #f5f4f0;
+          
+          &::before {
+            content: '\2605\2605\2605\2605\2605';
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
 
-        &::after {
-          content: var(--rating);
+          &::after {
+            content: var(--rating);
+          }
+          
+          .p-card_header_rating {
+            color: #ef530c;
+            font-weight: 800;
+          }
         }
-      }
-
-      .p-card_header_rating {
-        color: #ef530c;
-        font-weight: 800;
       }
     }
 
@@ -1222,13 +1232,11 @@
       .CardItem__pushPoint {
         margin-bottom: 1rem;
         padding: 1rem;
-        // display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
         font-weight: 700;
         font-size: 0.85rem;
         line-height: 1.5;
         background-color: #fae4e4;
+        text-align: start;
 
         .CardItem__pushPoint__point {
           font-size: 0.6rem;
@@ -1268,6 +1276,19 @@
             width: 1em;
             height: 1em;
           }
+        }
+
+        .CardItem__pushPoint__text {
+          white-space: nowrap;
+          display: inline-block;
+
+          @media ($ssp) {
+            font-size: 1rem;
+          }
+        }
+
+        .red {
+          color: red;
         }
       }
 
