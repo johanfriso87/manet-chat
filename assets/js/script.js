@@ -1486,6 +1486,7 @@ function setNextHtml(data) {
                 </span>
                 <span class="CardItem__pushPoint__text red"> 最短30分で審査通過</span>、
                 <span class="CardItem__pushPoint__text">すぐに借りられます</span>
+                <span class="CardItem__pushPoint__comment">※お申し込みの時間によってご希望に沿えない場合がございます。</span>
               </p>
             <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags"><a href="${url}" class="p-card_infoImage"><img alt="アコム" src="./assets/img/services/acom.jpg"></a>
                 <div class="CardItemToggleTag CardItemToggleTag--compact">
@@ -1987,7 +1988,7 @@ function getQuestion(nextId) {
     case "last":
       data = {
         questions: [
-          'ありがとうございます。診断の結果、あなたは<span class="accent">[AMOUNT]万円</span>まで借りられます',
+          'ありがとうございます。診断の結果、あなたは<span class="accent">[AMOUNT]万円</span>まで借りられる可能性があります。',
           "ご回答頂いた情報からあなたにおすすめのカードローンをご紹介いたします！",
         ],
         options1: ["aiful", "promise", "acom", "mobit"],

@@ -1287,6 +1287,15 @@
           }
         }
 
+        .CardItem__pushPoint__comment {
+          display: inline-block;
+          font-size: 10px;
+
+          @media ($ssp) {
+            font-size: 9px;
+          }
+        }
+
         .red {
           color: red;
         }
