@@ -1484,7 +1484,7 @@ function setNextHtml(data) {
                     <use xlink:href="#iconThumb"></use>
                   </svg>Point
                 </span>
-                <span class="CardItem__pushPoint__text red"> 利用者数No.1！</span><br><span class="CardItem__pushPoint__text red">カードローンランキング3部門No.1！</span><br><span class="CardItem__pushPoint__text red">審査に不安</span>でも、
+                <span class="CardItem__pushPoint__text red"> 利用者数No.1！</span><br><span class="CardItem__pushPoint__text red">カードローンランキング3部門No.1！</span><br><span class="CardItem__pushPoint__text red">審査に不安</span>でも、<br>
                 <span class="CardItem__pushPoint__text">誰にもバレずに今すぐお金を借りたい<br>人にオススメ！</span>
                 <!--span class="CardItem__pushPoint__comment">※お申し込みの時間によってご希望に沿えない場合がございます。</span-->
               </p>
