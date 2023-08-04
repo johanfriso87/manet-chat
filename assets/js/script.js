@@ -1344,7 +1344,7 @@ function setNextHtml(data) {
             </select>
           </li>
         </ul>
-        
+
         <div class="chat_next_btn_wrap">
           <button type="button" id="chat-next-btn-${data.id}" data-itemid="${data.id}" class="chat__form-btn" data-selected="" data-next="${data.nextId}" disabled>次に進む</button>
         </div>
@@ -1378,8 +1378,8 @@ function setNextHtml(data) {
               <h3 class="p-card_header_title">${orderSpan}<a href="${url}">プロミス</a></h3>
               <div class="wrapper-rating">
                 <h3 class="comment">口コミ評価</h3>
-                <div class="p-card_header_stars" style="--rating: 4.3; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
-                  <h3 class="p-card_header_rating">4.3</h3>
+                <div class="p-card_header_stars" style="--rating: 4.0; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
+                  <h3 class="p-card_header_rating">4.0</h3>
                 </div>
               </div>
             </header>
@@ -1389,9 +1389,9 @@ function setNextHtml(data) {
                   <svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
                     <use xlink:href="#iconThumb"></use>
                   </svg>Point
-                </span> 
+                </span>
                 <span class="CardItem__pushPoint__text red">WEB完結＆郵送物なし</span>
-                <span class="CardItem__pushPoint__text">で誰にもバレない</span> 
+                <span class="CardItem__pushPoint__text">で誰にもバレない</span>
               </p>
               <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags">
                 <a href="${url}" class="p-card_infoImage">
@@ -1456,7 +1456,7 @@ function setNextHtml(data) {
               <div class="p-card_buttonWrap">
                 <a href="${url}" data-cy="cardToRefresh" class="p-card_button">
                   <div class="p-card_buttonText">
-                    今すぐスマホで申し込み 
+                    今すぐスマホで申し込み
                     <svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-card_buttonIcon p-svgicon">
                       <use xlink:href="#iconCardArrowRight"></use>
                     </svg>
@@ -1467,13 +1467,13 @@ function setNextHtml(data) {
           </article>
         `,
         acom: `
-          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="acom" data-location="default" style="background-color: #fff;">
+          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="acom" data-location="default" style="background-color: #fffdea;">
             <header class="p-card_header" style="background-color: #fff;">
               <h3 class="p-card_header_title">${orderSpan}<a href="${url}">アコム</a></h3>
               <div class="wrapper-rating">
                 <h3 class="comment">口コミ評価</h3>
-                <div class="p-card_header_stars" style="--rating: 4.0; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
-                  <h3 class="p-card_header_rating">4.0</h3>
+                <div class="p-card_header_stars" style="--rating: 4.8; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
+                  <h3 class="p-card_header_rating">4.8</h3>
                 </div>
               </div>
             </header>
@@ -1484,9 +1484,9 @@ function setNextHtml(data) {
                     <use xlink:href="#iconThumb"></use>
                   </svg>Point
                 </span>
-                <span class="CardItem__pushPoint__text red"> 最短30分で審査通過</span>、
-                <span class="CardItem__pushPoint__text">すぐに借りられます</span>
-                <span class="CardItem__pushPoint__comment">※お申し込みの時間によってご希望に沿えない場合がございます。</span>
+                <span class="CardItem__pushPoint__text red"> 利用者数No.1！</span><br><span class="CardItem__pushPoint__text red">カードローンランキング3部門No.1！</span><br><span class="CardItem__pushPoint__text red">審査に不安</span>でも、
+                <span class="CardItem__pushPoint__text">誰にもバレずに今すぐお金を借りたい<br>人にオススメ！</span>
+                <!--span class="CardItem__pushPoint__comment">※お申し込みの時間によってご希望に沿えない場合がございます。</span-->
               </p>
             <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags"><a href="${url}" class="p-card_infoImage"><img alt="アコム" src="./assets/img/services/acom.jpg"></a>
                 <div class="CardItemToggleTag CardItemToggleTag--compact">
@@ -1572,7 +1572,7 @@ function setNextHtml(data) {
                   <svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon">
                     <use xlink:href="#iconThumb"></use>
                   </svg>Point
-                </span> 
+                </span>
                 <span class="CardItem__pushPoint__text red">誰にもバレずに</span>
                 <span class="CardItem__pushPoint__text" style="text-decoration: underline;">スピード申し込み</span>
               </p>
@@ -1640,13 +1640,13 @@ function setNextHtml(data) {
       </article>
         `,
         aiful: `
-          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="aiful" data-location="default" style="background-color: #fffdea;">
+          <article data-theme="" data-style="simple" class="p-card CardItem" data-name="aiful" data-location="default" style="background-color: #fff;">
       <header class="p-card_header" style="background-color: #fffdea;">
           <h3 class="p-card_header_title">${orderSpan}<a href="${url}">アイフル</a></h3>
           <div class="wrapper-rating">
             <h3 class="comment">口コミ評価</h3>
-            <div class="p-card_header_stars" style="--rating: 4.8; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
-              <h3 class="p-card_header_rating">4.8</h3>
+            <div class="p-card_header_stars" style="--rating: 4.3; --star-background: #ffa338; --star-color: #dddddd; --star-size: 1rem;">
+              <h3 class="p-card_header_rating">4.3</h3>
             </div>
           </div>
       </header>
@@ -1660,7 +1660,7 @@ function setNextHtml(data) {
           <span class="CardItem__pushPoint__text">審査に不安でも、</span>
           <span class="CardItem__pushPoint__text red">誰にもバレずに今すぐお金を借りたい</span>
           <span class="CardItem__pushPoint__text">人にオススメ！</span>
-        </p>   
+        </p>
           <div data-jest="cardTopInfo" class="p-card_info p-card_info_largeThumbnail CardItem__info--sideTags CardItemGrouping__info--sideTags"><a href="${url}" class="p-card_infoImage"><img alt="アイフル" src="./assets/img/services/aiful.jpg"></a>
               <div class="CardItemToggleTag CardItemToggleTag--compact">
                   <ul class="CardItemToggleTag__list">
@@ -1696,14 +1696,14 @@ function setNextHtml(data) {
                     </li>
                   </ul>
               </div>
-          </div>           
+          </div>
           <div class="p-card_infoArticle_blocks" style="display: none;">
               <p data-block-type="article-point" class="p-card_infoArticle_block is-title has-icon"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon" data-icon="iconCircleBold">
                       <use xlink:href="#iconCircleBold"></use>
                   </svg> <span>職場・自宅への電話連絡が原則なし</span></p>
               <ul class="p-card_infoArticle_block">
                   <li>職場への電話連絡なし！</li>
-                  <li><span class="u-text-color-red">公式HP</span>にもその記載あり！</li>                 
+                  <li><span class="u-text-color-red">公式HP</span>にもその記載あり！</li>
               </ul>
               <p data-block-type="article-point" class="p-card_infoArticle_block is-title has-icon"><svg version="1.1" aria-hidden="true" role="img" data-type="" class="p-svgicon" data-icon="iconCircleBold">
                       <use xlink:href="#iconCircleBold"></use>
@@ -1727,7 +1727,7 @@ function setNextHtml(data) {
                   <li><span class="u-text-color-red">スマホ・クレカ</span>の延滞は、特に審査への影響があります。</li>
               </ul>
           </div>
-          
+
       <dl class="CardItemTable u-mt-3 CardItemTable--simple" data-jest="cardItemTable">
           <div class="CardItemTable_dl">
               <dt class="CardItemTable_dt">金利</dt>
@@ -1991,8 +1991,8 @@ function getQuestion(nextId) {
           'ありがとうございます。診断の結果、あなたは<span class="accent">[AMOUNT]万円</span>まで借りられる可能性があります。',
           "ご回答頂いた情報からあなたにおすすめのカードローンをご紹介いたします！",
         ],
-        options1: ["aiful", "promise", "acom", "mobit"],
-        options2: ["aiful", "promise", "acom", "mobit"],
+        options1: ["acom", "aiful", "promise", "mobit"],
+        options2: ["acom", "aiful", "promise", "mobit"],
         type: "last",
       };
       break;

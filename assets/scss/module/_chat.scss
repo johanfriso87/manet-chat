@@ -1147,6 +1147,7 @@
       flex-wrap: wrap;
       padding: 10px 15px;
       border-bottom: 1px solid #ddd;
+      z-index: auto;
 
       .p-card_header_title {
         line-height: 1.5;
@@ -1196,16 +1197,16 @@
           font-weight: 800;
           margin-right: 0.5em;
         }
-        
+
         .p-card_header_stars {
           --percent: calc(var(--rating) / 5 * 100%);
-    
+
           display: flex;
           font-size: var(--star-size);
           font-family: Times; // make sure star appears correctly
           line-height: 1;
           background-color: #f5f4f0;
-          
+
           &::before {
             content: '\2605\2605\2605\2605\2605';
             letter-spacing: 3px;
@@ -1217,7 +1218,7 @@
           &::after {
             content: var(--rating);
           }
-          
+
           .p-card_header_rating {
             color: #ef530c;
             font-weight: 800;
