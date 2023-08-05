@@ -1515,6 +1515,12 @@ function setNextHtml(data) {
                         </div>
                         <div class="label-text">30日間金利ゼロ！</div>
                       </li>
+                      <li>
+                        <div class="label-check">
+                          <input type="checkbox">
+                        </div>
+                        <div class="label-text">コンビニATMで引き出せる</div>
+                      </li>
                     </ul>
                 </div>
             </div>
