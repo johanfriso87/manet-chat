@@ -1,7 +1,7 @@
 name: Update Issue Status
 
 on:
-  push:
+  pull_request:
     branches:
       - "*"
 
