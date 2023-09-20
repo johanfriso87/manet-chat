@@ -1,7 +1,7 @@
 name: Update Issue Status
 
 on:
-  pull_request:
+  push:
     branches:
       - "*"
 
@@ -9,9 +9,14 @@ jobs:
   update_issue_status:
     runs-on: ubuntu-latest
     steps:
-      - name: Check if branch name contains issue number
-        uses: alex-page/github-project-automation-plus@v0.3.0
-        with:
-          project: test
-          column: In Progress
-          repo-token: ${{ secrets.PERSIONAL_ACCESS_TOKEN }}
+      - name: Update Issue Status to "In Progress"
+        if: startsWith(github.ref, 'refs/heads/')
+        run: |
+          echo "Updating Issue status to 'In Progress'"
+          # Replace with appropriate GitHub API call to update the issue status to "In Progress"
+          # Example:
+          curl -X PATCH \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.PERSIONAL_ACCESS_TOKEN }}" \
+            -d '{"state": "In Progress"}' \
+            "https://api.github.com/repos/${{ github.repository }}/issues/4"
