@@ -1,0 +1,21 @@
+name: Update Issue Status
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  update_issue_status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Issue Status to "In Progress"
+        run: |
+          echo "Updating Issue status to 'In Progress'"
+          # Replace with appropriate GitHub API call to update the issue status to "In Progress"
+          # Example:
+          curl -X PATCH \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.PERSIONAL_ACCESS_TOKEN }}" \
+            -d '{"status": "In Progress"}' \
+            "https://api.github.com/repos/${{ github.repository }}/issues/4"
