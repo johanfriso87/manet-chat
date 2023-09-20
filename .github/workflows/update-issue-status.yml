@@ -14,4 +14,4 @@ jobs:
         with:
           project: ${{github.repository}}
           column: In Progress
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
