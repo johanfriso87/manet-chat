@@ -3,7 +3,7 @@ name: Update Issue Status
 on:
   push:
     branches:
-      - '*'
+      - "*"
 
 jobs:
   update_issue_status:
@@ -11,7 +11,11 @@ jobs:
     steps:
       - name: Check if branch name contains issue number
         id: extract_issue_number
-        run: echo "::set-output name=issue_number::$(echo ${GITHUB_REF#refs/heads/} | grep -oE '^[0-9]+')"
+        run: |
+          echo "::set-output name=issue_number::$(echo ${GITHUB_REF#refs/heads/} | grep -oE '^[0-9]+')"
+          echo "Extracted issue number: ${{ steps.extract_issue_number.outputs.issue_number }}"
+          echo "Github Token: ${{ secrets.GITHUB_TOKEN }}"
+          echo "Repository: ${{ github.repository }}"
 
       - name: Update Issue Status to In Progress
         uses: alex-page/github-project-automation-plus@v0.3.0
