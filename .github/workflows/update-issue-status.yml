@@ -12,6 +12,6 @@ jobs:
       - name: Check if branch name contains issue number
         uses: alex-page/github-project-automation-plus@v0.3.0
         with:
-          project: ${{ github.event.repository.name }}
+          project: test
           column: In Progress
           repo-token: ${{ secrets.PERSIONAL_ACCESS_TOKEN }}
